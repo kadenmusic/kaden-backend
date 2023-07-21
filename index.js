@@ -2,13 +2,12 @@ const cool = require('cool-ascii-faces')
 const express = require('express')
 const path = require('path')
 const { Pool } = require('pg')
+const DATABASE_URL = 'postgres://username:password@localhost:5435/database-name?sslmode=disable';
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-})
+  connectionString: DATABASE_URL,
+  ssl: false
+});
 
 const PORT = process.env.PORT || 8080;
 const HOST = '0.0.0.0';
@@ -41,5 +40,5 @@ function showTimes() {
   for (i = 0; i < times; i++) {
     result += i + ' '
   }
-  return result
+  return result;
 }
