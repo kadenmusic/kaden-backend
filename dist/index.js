@@ -15,8 +15,10 @@ const path = require('path');
 const { Pool } = require('pg');
 // const DATABASE_URL = 'postgres://username:password@localhost:5435/database-name?sslmode=disable';
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: false
+    connectionString: process.env.DATABASE_URL || 'postgres://username:password@localhost:5435/database-name?sslmode=disable',
+    ssl: process.env.DATABASE_URL ? {
+        rejectUnauthorized: false
+    } : false
 });
 const PORT = process.env.PORT || 8080;
 // const HOST = '0.0.0.0';
