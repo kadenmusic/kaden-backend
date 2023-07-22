@@ -13,13 +13,13 @@ const cool = require('cool-ascii-faces');
 const express = require('express');
 const path = require('path');
 const { Pool } = require('pg');
-const DATABASE_URL = 'postgres://username:password@localhost:5435/database-name?sslmode=disable';
+// const DATABASE_URL = 'postgres://username:password@localhost:5435/database-name?sslmode=disable';
 const pool = new Pool({
-    connectionString: DATABASE_URL,
+    connectionString: process.env.DATABASE_URL,
     ssl: false
 });
 const PORT = process.env.PORT || 8080;
-const HOST = '0.0.0.0';
+// const HOST = '0.0.0.0';
 express()
     .use(express.static(path.join(__dirname, '../public')))
     .set('views', path.join(__dirname, '../views'))
@@ -39,4 +39,4 @@ express()
         res.send("Error " + err);
     }
 }))
-    .listen(PORT, HOST, () => console.log(`Listening on ${PORT}`));
+    .listen(PORT, () => console.log(`Listening on ${PORT}`));
