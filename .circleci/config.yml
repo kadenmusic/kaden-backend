@@ -19,17 +19,21 @@ jobs:
   test:
     executor: node/default
     working_directory: ~/project
-    steps:
-      - checkout
-      - run: npm install
-      - run: mkdir ~/junit
-      - run:
-          command: npm test
-          environment:
-            MOCHA_FILE: ~/junit/test-results.xml
-          when: always
-      - store_test_results:
-          path: ~/junit
+  steps:
+    - checkout
+    - run:
+        name: Install dependencies
+        command: npm install
+    - run:
+        name: Install JUnit coverage reporter
+        command: npm install --save-dev jest-junit
+    - run:
+        name: Run tests with JUnit as reporter
+        command: jest --ci --runInBand --reporters=default --reporters=jest-junit
+        environment:
+          JEST_JUNIT_OUTPUT_DIR: ./reports/
+    - store_test_results:
+        path: ./reports/
 
   deploy:
     docker:
