@@ -5,14 +5,15 @@
   "engines": {
     "node": "20.x || 18.x || 16.x"
   },
-  "main": "./src/index.ts",
+  "main": "./src/server.ts",
   "scripts": {
-    "start": "ts-node dist/index.js",
+    "start": "ts-node dist/server.js",
+    "start-worker": "ts-node dist/worker.js",
     "build": "tsc -p .",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "test": "jest --ci --testResultsProcessor=\"jest-junit\"",
-    "hcp": "heroku container:push web -a kaden-backend",
-    "hcd": "heroku container:release web -a kaden-backend"
+    "push-image": "heroku container:push web -a kaden-backend",
+    "release-image": "heroku container:release web -a kaden-backend"
   },
   "dependencies": {
     "bull": "^4.10.4",

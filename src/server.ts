@@ -24,14 +24,15 @@ const pool = new Pool({
 const workQueue = new Queue("work", REDIS_URL);
 
 const app = express()
-  .use(express.static(path.join(__dirname, "../public")))
+  .use(express.static(path.join(__dirname, "../src/public")))
   .set("views", path.join(__dirname, "../views"))
   .set("view engine", "ejs")
+  .get("/", (req: Request, res: Response) => res.render("pages/index"))
   .get("/client.js", (req: Request, res: Response) =>
-    res.sendFile("client.js", { root: "./" }),
+    res.sendFile("client.js", { root: "./src/public" }),
   )
   .get("/jobs", async (req: Request, res: Response) =>
-    res.sendFile("index.html", { root: "./" }),
+    res.sendFile("jobs.html", { root: "./src/public" }),
   )
   .post("/job", async (req: Request, res: Response) => {
     // This would be where you could pass arguments to the job
@@ -53,7 +54,6 @@ const app = express()
       res.json({ id, state, progress, reason });
     }
   })
-  .get("/", (req: Request, res: Response) => res.render("pages/index"))
   .get("/cool", (req: Request, res: Response) => res.send(cool()))
   .get("/db", async (req: Request, res: Response) => {
     try {

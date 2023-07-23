@@ -4,4 +4,4 @@ build:
     worker: Dockerfile
 run:
   web: npm start
-  worker: node worker.js
+  worker: npm run start-worker
