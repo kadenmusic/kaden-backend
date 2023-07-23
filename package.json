@@ -10,7 +10,7 @@
     "start": "ts-node dist/index.js",
     "build": "tsc -p .",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "test": "node_modules/.bin/mocha --reporter mocha-circleci-reporter test/*.js",
+    "test": "mocha",
     "hcp": "heroku container:push web -a kaden-backend",
     "hcd": "heroku container:release web -a kaden-backend"
   },
