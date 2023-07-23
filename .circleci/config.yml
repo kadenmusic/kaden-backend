@@ -19,6 +19,8 @@ jobs:
     docker:
       - image: "cimg/base:2023.07"
     steps:
+      - setup_remote_docker:
+          version: 20.10.14
       - checkout
       - heroku/install
       - run: heroku container:login
