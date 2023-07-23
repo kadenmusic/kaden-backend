@@ -4,7 +4,10 @@ const cool = require("cool-ascii-faces");
 const express = require("express");
 const path = require("path");
 const { Pool } = require("pg");
-// const DATABASE_URL = 'postgres://username:password@localhost:5435/database-name?sslmode=disable';
+const Queue = require("bull");
+
+const REDIS_URL = process.env.REDIS_URL || "redis://127.0.0.1:6380";
+const PORT = process.env.PORT || 8080;
 
 const pool = new Pool({
   connectionString:
@@ -17,13 +20,39 @@ const pool = new Pool({
     : false,
 });
 
-const PORT = process.env.PORT || 8080;
-// const HOST = '0.0.0.0';
+// Create / Connect to a named work queue
+const workQueue = new Queue("work", REDIS_URL);
 
-express()
+const app = express()
   .use(express.static(path.join(__dirname, "../public")))
   .set("views", path.join(__dirname, "../views"))
   .set("view engine", "ejs")
+  .get("/client.js", (req: Request, res: Response) =>
+    res.sendFile("client.js", { root: "./" }),
+  )
+  .get("/jobs", async (req: Request, res: Response) =>
+    res.sendFile("index.html", { root: "./" }),
+  )
+  .post("/job", async (req: Request, res: Response) => {
+    // This would be where you could pass arguments to the job
+    // Ex: workQueue.add({ url: 'https://www.heroku.com' })
+    // Docs: https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queueadd
+    const job = await workQueue.add();
+    res.json({ id: job.id });
+  })
+  .get("/job/:id", async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const job = await workQueue.getJob(id);
+
+    if (job === null) {
+      res.status(404).end();
+    } else {
+      const state = await job.getState();
+      const progress = job._progress;
+      const reason = job.failedReason;
+      res.json({ id, state, progress, reason });
+    }
+  })
   .get("/", (req: Request, res: Response) => res.render("pages/index"))
   .get("/cool", (req: Request, res: Response) => res.send(cool()))
   .get("/db", async (req: Request, res: Response) => {
@@ -37,5 +66,10 @@ express()
       console.error(err);
       res.send("Error " + err);
     }
-  })
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  });
+
+workQueue.on("global:completed", (jobId: any, result: any) => {
+  console.log(`Job completed with result ${result}`);
+});
+
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
