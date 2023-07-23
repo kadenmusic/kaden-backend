@@ -24,10 +24,8 @@ jobs:
       - checkout
       - heroku/install
       - run: heroku container:login
-      - heroku/push-docker-image:
-          process-types: web
-      - heroku/release-docker-image:
-          process-types: web
+      - run: heroku container:push -a kaden-backend web
+      - run: heroku container:release -a kaden-backend web
 
 workflows:
   test_my_app:
