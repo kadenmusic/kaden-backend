@@ -41,7 +41,7 @@ jobs:
       - checkout
       - heroku/install
       - run: heroku container:login
-      - run: heroku/deploy-via-git
+      - heroku/deploy-via-git
       # - run: heroku container:push -a kaden-backend web
       # - run: heroku container:release -a kaden-backend web
 
