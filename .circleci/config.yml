@@ -22,7 +22,6 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: mkdir reports/junit
       - run:
           name: "JavaScript Test Suite"
           environment:
