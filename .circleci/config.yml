@@ -23,7 +23,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
-      - if [[ -e test-results.xml ]]; then cp test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml; fi
+      - run: if [[ -e test-results.xml ]]; then cp test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml; fi
 
   deploy:
     docker:
