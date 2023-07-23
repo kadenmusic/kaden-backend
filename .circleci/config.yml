@@ -23,7 +23,7 @@ jobs:
       - checkout
       - run: npm install
       - run:
-          name: "JavaScript Test Suite"
+          name: "Run Jest tests"
           environment:
             JEST_JUNIT_OUTPUT_DIR: reports/junit/js-test-results.xml
           command: npm test --ci --testResultsProcessor="jest-junit"
