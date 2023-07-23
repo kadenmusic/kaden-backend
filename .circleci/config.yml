@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   heroku: circleci/heroku@2.0.0
+  node: circleci/node@5.0.2
 
 jobs:
   build:
@@ -14,6 +15,16 @@ jobs:
       - checkout
       - run: docker build .
       - run: docker system prune --force
+
+  test:
+    executor: node/default
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+      - store_test_results:
+          path: results.xml
 
   deploy:
     docker:
@@ -31,9 +42,11 @@ workflows:
   build_and_deploy:
     jobs:
       - build
+      - test
       - deploy:
           requires:
             - build
+            - test
           filters:
             branches:
               only: main

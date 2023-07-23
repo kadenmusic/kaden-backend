@@ -4,6 +4,10 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   ignorePatterns: ["**/dist/*", ".eslintrc.js"],
   root: true,
+  env: {
+    node: true,
+    mocha: true,
+  },
   rules: {
     "@typescript-eslint/no-var-requires": 0,
   },
