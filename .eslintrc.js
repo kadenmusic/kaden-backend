@@ -6,7 +6,7 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    mocha: true,
+    jest: true,
   },
   rules: {
     "@typescript-eslint/no-var-requires": 0,
