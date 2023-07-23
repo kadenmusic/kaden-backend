@@ -15,6 +15,12 @@ jobs:
       - run: docker build .
       - run: docker system prune --force
 
+  test:
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: npm test
+
   deploy:
     docker:
       - image: "cimg/base:2023.07"
@@ -34,6 +40,7 @@ workflows:
       - deploy:
           requires:
             - build
+            - test
           filters:
             branches:
               only: main
