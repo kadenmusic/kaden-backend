@@ -10,7 +10,7 @@
     "start": "ts-node dist/index.js",
     "build": "tsc -p .",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "test": "mocha",
+    "test": "node_modules/.bin/mocha --reporter mocha-circleci-reporter test/*.js",
     "hcp": "heroku container:push web -a kaden-backend",
     "hcd": "heroku container:release web -a kaden-backend"
   },
@@ -29,6 +29,7 @@
     "eslint": "^8.45.0",
     "got": "^11.3.0",
     "mocha": "^10.2.0",
+    "mocha-circleci-reporter": "^0.0.3",
     "nodemon": "^3.0.1",
     "prettier": "3.0.0",
     "tape": "^4.7.0",
