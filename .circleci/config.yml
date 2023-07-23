@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@2.0.0
+
 jobs:
   build:
     docker:
@@ -17,9 +20,12 @@ jobs:
       - image: "cimg/base:2023.07"
     steps:
       - checkout
-      - run: >
-          git push https://heroku:$HEROKU_API_KEY@git.heroku.com/kaden-backend.git
-          main
+      - heroku/install
+      - run: heroku container:login
+      - heroku/push-docker-image:
+          process-types: web
+      - heroku/release-docker-image:
+          process-types: web
 
 workflows:
   test_my_app:
