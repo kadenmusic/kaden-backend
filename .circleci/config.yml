@@ -22,14 +22,15 @@ jobs:
   steps:
     - checkout
     - run: npm install
-    - run: npm install --save-dev jest-junit
     - run:
-        name: Run tests with JUnit as reporter
-        command: jest --ci --runInBand --reporters=default --reporters=jest-junit
+        name: "JavaScript Test Suite"
         environment:
-          JEST_JUNIT_OUTPUT_DIR: ./reports/
+          JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
+        command: yarn test -- --ci --testResultsProcessor="jest-junit"
     - store_test_results:
-        path: ./reports/
+        path: reports/junit
+    - store_artifacts:
+        path: reports/junit
 
   deploy:
     docker:
