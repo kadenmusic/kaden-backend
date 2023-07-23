@@ -16,6 +16,7 @@ jobs:
       - run: docker system prune --force
 
   test:
+    executor: node/default
     working_directory: ~/project
     steps:
       - checkout
