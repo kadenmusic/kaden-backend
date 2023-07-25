@@ -4,6 +4,12 @@ build:
     worker: Dockerfile
 
 release:
+  image: web
+  command:
+    - npx prisma migrate deploy
+
+release:
+  image: worker
   command:
     - npx prisma migrate deploy
 
