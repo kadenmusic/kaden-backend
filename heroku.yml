@@ -6,7 +6,6 @@ build:
 release:
   image: web
   command:
-    - npx prisma migrate resolve --applied 0_init
     - npx prisma migrate deploy
 
 run:
