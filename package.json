@@ -5,10 +5,10 @@
   "engines": {
     "node": "20.x || 18.x || 16.x"
   },
-  "main": "./dist/server.js",
+  "main": "./dist/src/server.js",
   "scripts": {
-    "start": "ts-node dist/server.js",
-    "start-worker": "ts-node dist/worker.js",
+    "start": "ts-node dist/src/server.js",
+    "start-worker": "ts-node dist/src/worker.js",
     "build": "tsc -p .",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "test": "jest --ci --testResultsProcessor=\"jest-junit\"",
