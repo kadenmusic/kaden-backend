@@ -24,8 +24,8 @@ const pool = new Pool({
 const workQueue = new Queue("work", REDIS_URL);
 
 const app = express()
-  .use(express.static(path.join(__dirname, "../src/public")))
-  .set("views", path.join(__dirname, "../views"))
+  .use(express.static(path.join(__dirname, "../../src/public")))
+  .set("views", path.join(__dirname, "../../views"))
   .set("view engine", "ejs")
   .get("/", (req: Request, res: Response) => res.render("pages/index"))
   .get("/client.js", (req: Request, res: Response) =>
