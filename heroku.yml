@@ -8,11 +8,6 @@ release:
   command:
     - npx prisma migrate deploy
 
-release:
-  image: worker
-  command:
-    - npx prisma migrate deploy
-
 run:
   web: npm start
   worker: npm run start-worker
