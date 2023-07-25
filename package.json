@@ -5,7 +5,7 @@
   "engines": {
     "node": "20.x || 18.x || 16.x"
   },
-  "main": "./src/server.ts",
+  "main": "./dist/server.js",
   "scripts": {
     "start": "ts-node dist/server.js",
     "start-worker": "ts-node dist/worker.js",
