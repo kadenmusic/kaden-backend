@@ -101,6 +101,24 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- IMPORTANT COMMANDS -->
+
+## Important Commands
+
+### Access production database GUI:
+
+1. Login to Heroku
+
+   `heroku login`
+
+2. Run the following command to launch pgweb
+
+   `heroku config:get DATABASE_URL -a kaden-backend | xargs pgweb --url`
+
+   or
+
+   `npm run pgweb-prod`
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
@@ -123,9 +141,11 @@ _Below is an example of how you can instruct your audience on installing and set
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
+
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
+
 3. Install NPM packages
    ```sh
    npm install
