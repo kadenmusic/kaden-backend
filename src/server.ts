@@ -8,10 +8,7 @@ const Queue = require("bull");
 import * as Sentry from "@sentry/node";
 
 Sentry.init({
-  dsn: "https://f0f919c461ad48b89d9ba0ce84ce0758@o4505597591093248.ingest.sentry.io/4505597591093248",
-
-  // We recommend adjusting this value in production, or using tracesSampler
-  // for finer control
+  dsn: process.env.SENTRY_DSN || "",
   tracesSampleRate: 1.0,
 });
 
