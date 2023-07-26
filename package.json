@@ -1,7 +1,7 @@
 {
-  "name": "kaden-backend",
+  "name": "kaden-music",
   "version": "0.0.1",
-  "description": "Kaden Music Backend",
+  "description": "Kaden Music - Daily Music Sharing",
   "engines": {
     "node": "20.x || 18.x || 16.x"
   },
@@ -12,9 +12,9 @@
     "build": "tsc -p .",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "test": "jest --ci --testResultsProcessor=\"jest-junit\"",
-    "push-image": "heroku container:push web -a kaden-backend",
-    "release-image": "heroku container:release web -a kaden-backend",
-    "pgweb-prod": "heroku config:get DATABASE_URL -a kaden-backend | xargs pgweb --url"
+    "push-image": "heroku container:push web -a kaden-music",
+    "release-image": "heroku container:release web -a kaden-music",
+    "pgweb-prod": "heroku config:get DATABASE_URL -a kaden-music | xargs pgweb --url"
   },
   "dependencies": {
     "@prisma/client": "^5.0.0",
@@ -44,7 +44,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/kaden-backend"
+    "url": "https://github.com/heroku/kaden-music"
   },
   "keywords": [
     "node",

@@ -42,8 +42,8 @@ jobs:
       - heroku/install
       - run: heroku container:login
       - heroku/deploy-via-git
-      # - run: heroku container:push -a kaden-backend web
-      # - run: heroku container:release -a kaden-backend web
+      # - run: heroku container:push -a kaden-music web
+      # - run: heroku container:release -a kaden-music web
 
 workflows:
   build_test_deploy:
