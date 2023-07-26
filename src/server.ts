@@ -5,6 +5,12 @@ const express = require("express");
 const path = require("path");
 const { Pool } = require("pg");
 const Queue = require("bull");
+import * as Sentry from "@sentry/node";
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN || "",
+  tracesSampleRate: 1.0,
+});
 
 const REDIS_URL = process.env.REDIS_URL || "redis://127.0.0.1:6380";
 const PORT = process.env.PORT || 8080;
@@ -58,6 +64,21 @@ const app = express()
   })
   .get("/cool", (req: Request, res: Response) => res.send(cool()))
   .get("/db", async (req: Request, res: Response) => {
+    // const transaction = Sentry.startTransaction({
+    //   op: "test",
+    //   name: "My First Test Transaction",
+    // });
+
+    // setTimeout(() => {
+    //   try {
+    //     throw new Error("This is a test error");
+    //   } catch (e) {
+    //     Sentry.captureException(e);
+    //   } finally {
+    //     transaction.finish();
+    //   }
+    // }, 99);
+
     try {
       const client = await pool.connect();
       const result = await client.query("SELECT * FROM test_table");
