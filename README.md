@@ -125,6 +125,12 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
    `npx prisma migrate dev --name <migration-name>`
 
+### Access Heroku logs:
+
+1. Run the following command to access Heroku logs
+
+   `heroku logs --tail --app kaden-backend`
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
