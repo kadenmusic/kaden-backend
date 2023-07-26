@@ -8,12 +8,13 @@
   "main": "./dist/server.js",
   "scripts": {
     "start": "ts-node dist/server.js",
-    "start-worker": "ts-node dist/src/worker.js",
+    "start-worker": "ts-node dist/worker.js",
     "build": "tsc -p .",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "test": "jest --ci --testResultsProcessor=\"jest-junit\"",
     "push-image": "heroku container:push web -a kaden-backend",
-    "release-image": "heroku container:release web -a kaden-backend"
+    "release-image": "heroku container:release web -a kaden-backend",
+    "pgweb-prod": "heroku config:get DATABASE_URL -a kaden-backend | xargs pgweb --url"
   },
   "dependencies": {
     "@prisma/client": "^5.0.0",
