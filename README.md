@@ -119,6 +119,12 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
    `npm run pgweb-prod`
 
+### Run a Prisma migration after editing `schema.prisma`:
+
+1. Run the following command to generate a migration
+
+   `npx prisma migrate dev --name <migration-name>`
+
 <!-- GETTING STARTED -->
 
 ## Getting Started

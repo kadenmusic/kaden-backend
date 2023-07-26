@@ -6,6 +6,7 @@ build:
 release:
   image: web
   command:
+    - npx prisma migrate reset
     - npx prisma migrate deploy
 
 run:
