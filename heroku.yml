@@ -6,7 +6,6 @@ build:
 release:
   image: web
   command:
-    - npx prisma migrate resolve --applied 20230726015824_wipe_test_data
     - npx prisma migrate deploy
 
 run:
