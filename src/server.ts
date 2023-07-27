@@ -1,15 +1,66 @@
 import { Request, Response } from "express";
-
-const cool = require("cool-ascii-faces");
-const express = require("express");
-const path = require("path");
-const { Pool } = require("pg");
-const Queue = require("bull");
+import express from "express";
+import path from "path";
+import pg from "pg";
+import Queue from "bull";
 import * as Sentry from "@sentry/node";
+import cors from "cors";
+import bodyParser from "body-parser";
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
+
+const { Pool } = pg;
+const __dirname = path.resolve();
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN || "",
   tracesSampleRate: 1.0,
+});
+
+// A schema is a collection of type definitions (hence "typeDefs")
+// that together define the "shape" of queries that are executed against
+// your data.
+const typeDefs = `#graphql
+  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+
+  # This "Book" type defines the queryable fields for every book in our data source.
+  type Book {
+    title: String
+    author: String
+  }
+
+  # The "Query" type is special: it lists all of the available queries that
+  # clients can execute, along with the return type for each. In this
+  # case, the "books" query returns an array of zero or more Books (defined above).
+  type Query {
+    books: [Book]
+  }
+`;
+
+const books = [
+  {
+    title: "The Awakening",
+    author: "Kate Chopin",
+  },
+  {
+    title: "City of Glass",
+    author: "Paul Auster",
+  },
+];
+
+// Resolvers define how to fetch the types defined in your schema.
+// This resolver retrieves books from the "books" array above.
+const resolvers = {
+  Query: {
+    books: () => books,
+  },
+};
+
+// The ApolloServer constructor requires two parameters: your schema
+// definition and your set of resolvers.
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
 });
 
 const REDIS_URL = process.env.REDIS_URL || "redis://127.0.0.1:6380";
@@ -29,40 +80,26 @@ const pool = new Pool({
 // Create / Connect to a named work queue
 const workQueue = new Queue("work", REDIS_URL);
 
-const srcPath = path.join(__dirname, "../src");
+const srcPath = path.join(__dirname, "src");
+
+// Note you must call `start()` on the `ApolloServer`
+// instance before passing the instance to `expressMiddleware`
+await server.start();
 
 const app = express()
   .use(express.static(path.join(srcPath, "public")))
+  .use(
+    "/graphql",
+    cors<cors.CorsRequest>(),
+    bodyParser.json(),
+    expressMiddleware(server),
+  )
   .set("views", path.join(srcPath, "views"))
   .set("view engine", "ejs")
   .get("/", (req: Request, res: Response) => res.render("pages/index"))
   .get("/client.js", (req: Request, res: Response) =>
     res.sendFile("client.js", { root: "./src/public" }),
   )
-  .get("/jobs", async (req: Request, res: Response) =>
-    res.sendFile("jobs.html", { root: "./src/public" }),
-  )
-  .post("/job", async (req: Request, res: Response) => {
-    // This would be where you could pass arguments to the job
-    // Ex: workQueue.add({ url: 'https://www.heroku.com' })
-    // Docs: https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queueadd
-    const job = await workQueue.add();
-    res.json({ id: job.id });
-  })
-  .get("/job/:id", async (req: Request, res: Response) => {
-    const id = req.params.id;
-    const job = await workQueue.getJob(id);
-
-    if (job === null) {
-      res.status(404).end();
-    } else {
-      const state = await job.getState();
-      const progress = job._progress;
-      const reason = job.failedReason;
-      res.json({ id, state, progress, reason });
-    }
-  })
-  .get("/cool", (req: Request, res: Response) => res.send(cool()))
   .get("/db", async (req: Request, res: Response) => {
     // const transaction = Sentry.startTransaction({
     //   op: "test",
