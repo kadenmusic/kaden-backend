@@ -1,5 +1,5 @@
 {
-  "exclude": ["kaden-mobile-app"],
+  "exclude": ["melogram-mobile"],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
