@@ -113,7 +113,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 2. Run the following command to launch pgweb
 
-   `heroku config:get DATABASE_URL -a kaden-music | xargs pgweb --url`
+   `heroku config:get DATABASE_URL -a melogram | xargs pgweb --url`
 
    or
 
@@ -129,7 +129,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 1. Run the following command to access Heroku logs
 
-   `heroku logs --tail --app kaden-music`
+   `heroku logs --tail --app melogram`
 
 <!-- GETTING STARTED -->
 
@@ -250,14 +250,14 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/kadenmusic/kaden-music.svg?style=for-the-badge
-[contributors-url]: https://github.com/kadenmusic/kaden-music/graphs/contributors
+[contributors-shield]: https://img.shields.io/github/contributors/kadenmusic/melogram.svg?style=for-the-badge
+[contributors-url]: https://github.com/kadenmusic/melogram/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
 [forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
 [stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/kadenmusic/kaden-music.svg?style=for-the-badge
-[issues-url]: https://github.com/kadenmusic/kaden-music/issues
+[issues-shield]: https://img.shields.io/github/issues/kadenmusic/melogram.svg?style=for-the-badge
+[issues-url]: https://github.com/kadenmusic/melogram/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
