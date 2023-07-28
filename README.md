@@ -51,8 +51,6 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 This application is going to function similarly to BeReal, but for sharing music. Receive a notification once per day at the same time as all your friends - post a recently played song, or a song you're currently listening to. See what your friends are listening to, and discover new music.
 
 Future features will include top-posted songs by your friends, and a way to save songs to your Spotify/Apple Music accounts. Podcasts will also be supported.
