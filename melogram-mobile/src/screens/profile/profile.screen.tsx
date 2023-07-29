@@ -1,7 +1,7 @@
 import { View, Text } from "native-base";
 import { darkModeBackgroundColor } from "../../styles/theme";
 
-export default function FeedScreen() {
+export default function ProfileScreen() {
   return (
     <View
       bg={darkModeBackgroundColor}
@@ -17,7 +17,7 @@ export default function FeedScreen() {
         }}
         fontSize={48}
       >
-        melogram
+        profile
       </Text>
     </View>
   );

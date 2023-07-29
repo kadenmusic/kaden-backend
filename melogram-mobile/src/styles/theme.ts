@@ -1,5 +1,7 @@
 import { extendTheme } from "native-base";
 
+export const darkModeBackgroundColor = "#09181f";
+
 export const typography = {
   fonts: {
     heading: "PlusJakartaSans",
