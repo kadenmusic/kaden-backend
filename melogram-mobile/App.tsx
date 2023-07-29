@@ -6,35 +6,9 @@ import { CUSTOM_FONTS } from "./src/config/constants";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-function HomeScreen() {
-  return (
-    <View flex={1} justifyContent="center" alignItems="center">
-      <Text
-        style={{ fontFamily: "PlusJakartaSans-ExtraBold", fontSize: 36 }}
-        fontSize={48}
-      >
-        melogram
-      </Text>
-    </View>
-  );
-}
-
-function LoginScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>LOGIN!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+import { theme } from "./src/styles/theme";
+import LoginScreen from "./src/screens/login/login.screen";
+import FeedScreen from "./src/screens/feed/feed.screen";
 
 export default function App() {
   const [fontsLoaded] = useFonts(CUSTOM_FONTS);
@@ -55,7 +29,7 @@ export default function App() {
   const dummyToken = false;
 
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={theme}>
       <NavigationContainer>
         {dummyToken ? (
           <Stack.Navigator>
@@ -63,8 +37,7 @@ export default function App() {
           </Stack.Navigator>
         ) : (
           <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Screen name="Home" component={FeedScreen} />
           </Tab.Navigator>
         )}
       </NavigationContainer>
