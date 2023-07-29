@@ -75,6 +75,12 @@ Future features will include top-posted songs by your friends, and a way to save
 
 ## Important Commands
 
+### Access local database GUI:
+
+1. Run the following command to launch pgweb
+
+   `pgweb --url "postgres://username:password@localhost:5435/database-name?sslmode=disable"`
+
 ### Access production database GUI:
 
 1. Login to Heroku
