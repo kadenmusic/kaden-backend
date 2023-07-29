@@ -4,3 +4,4 @@ dist
 junit.xml
 test-results.xml
 .env
+.DS_Store
