@@ -1,29 +1,31 @@
-import React from "react";
-import {
-  NativeBaseProvider,
-  Box,
-  Center,
-  HStack,
-  Icon,
-  View,
-} from "native-base";
+import React, { useCallback } from "react";
+import { NativeBaseProvider, Center, Text, View } from "native-base";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { CUSTOM_FONTS } from "./src/config/constants";
 
 export default function App() {
+  const [fontsLoaded] = useFonts(CUSTOM_FONTS);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <NativeBaseProvider>
       <View flex={1} justifyContent="center" alignItems="center">
-        <Center
-          bg="primary.400"
-          _text={{
-            color: "white",
-            fontWeight: "bold",
-          }}
-          height="32"
-          width="40"
-          shadow={2}
+        <Text
+          style={{ fontFamily: "PlusJakartaSans-ExtraBold", fontSize: 36 }}
+          fontSize={48}
         >
-          Center
-        </Center>
+          melogram
+        </Text>
       </View>
     </NativeBaseProvider>
   );
