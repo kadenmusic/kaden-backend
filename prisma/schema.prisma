@@ -20,9 +20,11 @@ model User {
   Posts    Post[]
   Comments Comment[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Like      Like[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  Like       Like[]
+  followedBy Follow[] @relation("following")
+  following  Follow[] @relation("follower")
 }
 
 model Profile {
@@ -100,4 +102,13 @@ enum MediaType {
 enum MediaUsageType {
   PROFILE_PICTURE
   COVER_ART
+}
+
+model Follow {
+  follower    User   @relation("follower", fields: [followerId], references: [id])
+  followerId  String
+  following   User   @relation("following", fields: [followingId], references: [id])
+  followingId String
+
+  @@id([followerId, followingId])
 }
