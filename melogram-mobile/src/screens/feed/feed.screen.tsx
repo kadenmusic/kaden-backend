@@ -11,6 +11,7 @@ import {
   Spacer,
   Image,
   Heading,
+  Skeleton,
 } from "native-base";
 import {
   darkModeBackgroundColor,
@@ -84,6 +85,7 @@ export default function FeedScreen({ navigation }: { navigation: any }) {
                   }}
                 />
                 <VStack>
+                  {/* <Skeleton h="10px" /> */}
                   <Text fontWeight={500}>{item.author.username}</Text>
                   <Text color="gray.500">2 hours ago</Text>
                 </VStack>
