@@ -1,6 +1,7 @@
 import { extendTheme } from "native-base";
 
 export const darkModeBackgroundColor = "#09181f";
+export const darkModePostBackgroundColor = "#0c1e27";
 
 export const colors = {
   gray: {
@@ -65,4 +66,22 @@ export const theme = extendTheme({
   fontConfig: typography.fontConfig,
   fonts: typography.fonts,
   colors: colors,
+  components: {
+    Text: {
+      baseStyle: ({ colorMode }: { colorMode: any }) => {
+        return {
+          color: "white",
+          fontWeight: "400",
+        };
+      },
+    },
+    Heading: {
+      baseStyle: ({ colorMode }: { colorMode: any }) => {
+        return {
+          color: "white",
+          fontWeight: "800",
+        };
+      },
+    },
+  },
 });
