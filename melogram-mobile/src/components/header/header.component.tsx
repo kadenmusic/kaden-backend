@@ -1,5 +1,6 @@
 import { HStack, Icon, IconButton, Text, View } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { HEADER_HEIGHT } from "../../config/constants";
 
 export default function HeaderComponent(props: {
   title: string;
@@ -14,7 +15,7 @@ export default function HeaderComponent(props: {
       paddingRight={5}
       paddingTop={2}
       height={{
-        base: 75,
+        base: HEADER_HEIGHT,
       }}
     >
       <Text

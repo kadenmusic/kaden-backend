@@ -14,3 +14,5 @@ export const CUSTOM_FONTS = {
   "PlusJakartaSans-SemiBold": require("../../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
   "PlusJakartaSans-SemiBoldItalic": require("../../assets/fonts/PlusJakartaSans-SemiBoldItalic.ttf"),
 };
+
+export const HEADER_HEIGHT = 75;
