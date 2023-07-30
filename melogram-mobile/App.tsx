@@ -10,9 +10,10 @@ import { colors, darkModeBackgroundColor, theme } from "./src/styles/theme";
 import LoginScreen from "./src/screens/login/login.screen";
 import FeedScreen from "./src/screens/feed/feed.screen";
 import { getIcon } from "./src/util/util";
-import ProfileScreen from "./src/screens/settings/settings.screen";
+
 import ChartsScreen from "./src/screens/charts/charts.screen";
 import SettingsScreen from "./src/screens/settings/settings.screen";
+import ProfileScreen from "./src/screens/profile/profile.screen";
 
 export default function App() {
   const [fontsLoaded] = useFonts(CUSTOM_FONTS);
@@ -32,6 +33,38 @@ export default function App() {
 
   const dummyToken = false;
 
+  function Home() {
+    return (
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarStyle: {
+            backgroundColor: darkModeBackgroundColor,
+            borderTopWidth: 0,
+          },
+          tabBarIcon: getIcon(route),
+          tabBarActiveTintColor: "white",
+          tabBarInactiveTintColor: colors.gray[500],
+        })}
+      >
+        <Tab.Screen
+          name="Feed"
+          component={FeedScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Charts"
+          component={ChartsScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{ headerShown: false }}
+        />
+      </Tab.Navigator>
+    );
+  }
+
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
@@ -42,33 +75,18 @@ export default function App() {
             <Stack.Screen name="Login" component={LoginScreen} />
           </Stack.Navigator>
         ) : (
-          <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarStyle: {
-                backgroundColor: darkModeBackgroundColor,
-                borderTopWidth: 0,
-              },
-              tabBarIcon: getIcon(route),
-              tabBarActiveTintColor: "white",
-              tabBarInactiveTintColor: colors.gray[500],
-            })}
-          >
-            <Tab.Screen
-              name="Feed"
-              component={FeedScreen}
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Home"
+              component={Home}
               options={{ headerShown: false }}
             />
-            <Tab.Screen
-              name="Charts"
-              component={ChartsScreen}
-              options={{ headerShown: false }}
+            <Stack.Screen
+              options={{ headerShown: true }}
+              name="Profile"
+              component={ProfileScreen}
             />
-            <Tab.Screen
-              name="Settings"
-              component={SettingsScreen}
-              options={{ headerShown: false }}
-            />
-          </Tab.Navigator>
+          </Stack.Navigator>
         )}
       </NavigationContainer>
     </NativeBaseProvider>

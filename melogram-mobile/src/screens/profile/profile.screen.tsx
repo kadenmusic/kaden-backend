@@ -1,9 +1,9 @@
-import { View, Text } from "native-base";
-import { darkModeBackgroundColor } from "../../styles/theme";
-import HeaderComponent from "../../components/header/header.component";
 import { SafeAreaView } from "react-native";
+import { Text } from "native-base";
+import HeaderComponent from "../../components/header/header.component";
+import { darkModeBackgroundColor } from "../../styles/theme";
 
-export default function SettingsScreen({ navigation }: { navigation: any }) {
+export default function ProfileScreen({ navigation }: { navigation: any }) {
   return (
     <SafeAreaView
       style={{
@@ -12,9 +12,9 @@ export default function SettingsScreen({ navigation }: { navigation: any }) {
       }}
     >
       <HeaderComponent
-        title={"Settings"}
-        showProfile={false}
         navigation={navigation}
+        title={"Profile"}
+        showProfile={false}
       />
       <Text
         style={{
@@ -24,7 +24,7 @@ export default function SettingsScreen({ navigation }: { navigation: any }) {
         }}
         fontSize={48}
       >
-        profile
+        My profile
       </Text>
     </SafeAreaView>
   );

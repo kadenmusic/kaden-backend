@@ -4,9 +4,14 @@ import { HEADER_HEIGHT } from "../../config/constants";
 
 export default function HeaderComponent(props: {
   title: string;
+  navigation: any;
   showProfile?: boolean;
 }) {
   const { showProfile = true } = props;
+
+  const goToProfileScreen = () => {
+    props.navigation.navigate("Profile");
+  };
 
   return (
     <HStack
@@ -30,6 +35,7 @@ export default function HeaderComponent(props: {
       {showProfile ? (
         <View>
           <IconButton
+            onPress={goToProfileScreen}
             marginRight={-3}
             marginTop={-1.5}
             icon={<Icon as={Ionicons} name="person-circle-outline" />}

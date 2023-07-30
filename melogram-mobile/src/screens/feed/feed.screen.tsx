@@ -27,7 +27,7 @@ import Constants from "expo-constants";
 import IconButtonComponent from "../../components/icon-button/icon-button.component";
 import { IconLibraryType } from "../../config/enums";
 
-export default function FeedScreen() {
+export default function FeedScreen({ navigation }: { navigation: any }) {
   const tabBarHeight = useBottomTabBarHeight();
   const { height } = Dimensions.get("window");
   const statusBarHeight = Constants.statusBarHeight;
@@ -49,7 +49,7 @@ export default function FeedScreen() {
         backgroundColor: darkModeBackgroundColor,
       }}
     >
-      <HeaderComponent title={"Your Feed"} />
+      <HeaderComponent navigation={navigation} title={"Your Feed"} />
       <View paddingLeft={5} paddingRight={5}>
         <FlatList
           showsVerticalScrollIndicator={false}
