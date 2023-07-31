@@ -1,7 +1,7 @@
 import { SafeAreaView } from "react-native";
 import { Text } from "native-base";
-import HeaderComponent from "../../components/header/header.component";
 import { darkModeBackgroundColor } from "../../styles/theme";
+import HeaderComponent from "../../components/shared/header/header.component";
 
 export default function ProfileScreen({ navigation }: { navigation: any }) {
   return (

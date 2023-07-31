@@ -18,21 +18,15 @@ import {
   darkModePostBackgroundColor,
 } from "../../styles/theme";
 import { RefreshControl, SafeAreaView, TouchableOpacity } from "react-native";
-import HeaderComponent from "../../components/header/header.component";
 import { useCallback, useState } from "react";
 import { dummyPostData } from "../../config/dummy";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import { Dimensions } from "react-native";
-import { HEADER_HEIGHT } from "../../config/constants";
-import Constants from "expo-constants";
-import IconButtonComponent from "../../components/icon-button/icon-button.component";
+import IconButtonComponent from "../../components/shared/icon-button/icon-button.component";
 import { IconLibraryType } from "../../config/enums";
+import * as Helpers from "../../helpers/helpers";
+import HeaderComponent from "../../components/shared/header/header.component";
 
 export default function FeedScreen({ navigation }: { navigation: any }) {
-  const tabBarHeight = useBottomTabBarHeight();
-  const { height } = Dimensions.get("window");
-  const statusBarHeight = Constants.statusBarHeight;
-  const listHeight = height - tabBarHeight - HEADER_HEIGHT - statusBarHeight;
+  const listHeight = Helpers.getScrollViewHeight();
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -121,6 +115,7 @@ export default function FeedScreen({ navigation }: { navigation: any }) {
                 <Heading>The Waterfall Pt. II</Heading>
                 <View style={{ flexDirection: "row" }}>
                   <Text color="gray.500">by </Text>
+                  <Text color="gray.500"> </Text>
                   <Text fontWeight={500}>My Morning Jacket</Text>
                 </View>
               </VStack>

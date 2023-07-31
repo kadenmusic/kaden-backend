@@ -11,6 +11,9 @@ export const colors = {
     400: "#9CA3AF",
     500: "#71717a",
   },
+  red: {
+    400: "#f87171", // https://docs.nativebase.io/default-theme
+  },
 };
 
 export const typography = {

@@ -36,6 +36,7 @@ export default function App() {
   function Home() {
     return (
       <Tab.Navigator
+        initialRouteName="Feed"
         screenOptions={({ route }) => ({
           tabBarStyle: {
             backgroundColor: darkModeBackgroundColor,

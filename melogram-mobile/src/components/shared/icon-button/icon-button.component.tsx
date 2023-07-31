@@ -1,7 +1,7 @@
 import { Icon, IconButton } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Entypo } from "@expo/vector-icons";
-import { IconLibraryType } from "../../config/enums";
+import { IconLibraryType } from "../../../config/enums";
 
 export default function IconButtonComponent(props: any) {
   switch (props.iconLibrary) {
