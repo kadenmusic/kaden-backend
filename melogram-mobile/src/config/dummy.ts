@@ -1,3 +1,5 @@
+export const AVATAR_SRC =
+  "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
 export const dummyPostData = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -12,10 +14,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -31,10 +31,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -50,10 +48,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -69,10 +65,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -88,10 +82,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -107,10 +99,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -126,10 +116,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -145,10 +133,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -164,10 +150,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -183,10 +167,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
   {
@@ -202,10 +184,8 @@ export const dummyPostData = [
       title: "Test Track Title",
       artist: "Test Artist",
       albumTitle: "Test Album Title",
-      spotifyImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      appleMusicImageUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      spotifyImageUrl: AVATAR_SRC,
+      appleMusicImageUrl: AVATAR_SRC,
     },
   },
 ];

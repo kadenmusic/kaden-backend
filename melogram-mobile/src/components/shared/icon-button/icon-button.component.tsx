@@ -11,7 +11,7 @@ export default function IconButtonComponent(props: any) {
           {...props}
           icon={<Icon as={Ionicons} name={props.iconName} />}
           _icon={{
-            color: "gray.500",
+            color: props.iconColor || "gray.500",
             size: props.iconSize,
           }}
           _pressed={{
@@ -29,7 +29,7 @@ export default function IconButtonComponent(props: any) {
           {...props}
           icon={<Icon as={Entypo} name={props.iconName} />}
           _icon={{
-            color: "gray.500",
+            color: props.iconColor || "gray.500",
             size: props.iconSize,
           }}
           _pressed={{
