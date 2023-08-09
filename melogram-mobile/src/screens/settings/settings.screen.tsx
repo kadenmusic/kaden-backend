@@ -44,7 +44,7 @@ export default function SettingsScreen({ navigation }: { navigation: any }) {
     >
       <HeaderComponent
         title={"Settings"}
-        showProfile={false}
+        showActionButtons={false}
         navigation={navigation}
       />
       <FlatList

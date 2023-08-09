@@ -4,6 +4,7 @@ import { StatusBar } from "native-base";
 import HomeNavigatorComponent from "./home-navigator.component";
 import ProfileScreen from "../../screens/profile/profile.screen";
 import LoginScreen from "../../screens/login/login.screen";
+import NotificationsScreen from "../../screens/notifications/notifications.screen";
 
 export default function AppNavigatorComponent() {
   const Stack = createNativeStackNavigator();
@@ -29,6 +30,11 @@ export default function AppNavigatorComponent() {
             options={{ headerShown: false }}
             name="Profile"
             component={ProfileScreen}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Notifications"
+            component={NotificationsScreen}
           />
         </Stack.Navigator>
       )}

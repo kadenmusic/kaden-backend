@@ -15,7 +15,7 @@ export default function ProfileScreen({ navigation }: { navigation: any }) {
       <HeaderComponent
         navigation={navigation}
         title={"Profile"}
-        showProfile={false}
+        showActionButtons={false}
         showBackButton={true}
       />
 
