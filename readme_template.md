@@ -45,6 +45,7 @@
     ·
     <a href="https://google.com">Request Feature</a>
   </p>
+
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -77,7 +78,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](images/screenshot.png)
 
 This application is going to function similarly to BeReal, but for sharing music. Receive a notification once per day at the same time as all your friends - post a recently played song, or a song you're currently listening to. See what your friends are listening to, and discover new music.
 

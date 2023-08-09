@@ -60,14 +60,16 @@ model Comment {
 }
 
 model Track {
-  id         String    @id @default(uuid())
-  type       TrackType
-  title      String
-  artist     String
-  albumTitle String
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  posts      Post[]
+  id                 String    @id @default(uuid())
+  type               TrackType
+  title              String
+  artist             String
+  albumTitle         String
+  spotifyImageUrl    String    @default("")
+  appleMusicImageUrl String    @default("")
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  posts              Post[]
 }
 
 enum TrackType {

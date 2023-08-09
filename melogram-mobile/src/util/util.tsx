@@ -16,8 +16,8 @@ export const getIcon = (route: RouteProp<ParamListBase, string>) => {
       case "Feed":
         iconName = focused ? "ios-home" : "ios-home-outline";
         break;
-      case "Profile":
-        iconName = focused ? "person-circle" : "person-circle-outline";
+      case "Settings":
+        iconName = focused ? "cog" : "cog-outline";
         break;
       case "Charts":
         iconName = focused ? "stats-chart" : "stats-chart-outline";
