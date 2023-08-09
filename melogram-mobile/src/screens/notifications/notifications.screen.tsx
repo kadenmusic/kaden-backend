@@ -1,7 +1,6 @@
 import { View, Text, HStack } from "native-base";
-import { darkModeBackgroundColor } from "../../styles/theme";
-import { SafeAreaView } from "react-native";
 import HeaderComponent from "../../components/shared/header/header.component";
+import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 
 export default function NotificationsScreen({
   navigation,
@@ -9,12 +8,7 @@ export default function NotificationsScreen({
   navigation: any;
 }) {
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: darkModeBackgroundColor,
-      }}
-    >
+    <SafeAreaWrapperComponent>
       <HeaderComponent
         navigation={navigation}
         title={"Notifications"}
@@ -28,6 +22,6 @@ export default function NotificationsScreen({
         alignItems={"center"}
         justifyContent={"flex-start"}
       ></HStack>
-    </SafeAreaView>
+    </SafeAreaWrapperComponent>
   );
 }

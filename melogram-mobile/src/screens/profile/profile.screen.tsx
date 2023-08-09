@@ -1,17 +1,11 @@
-import { SafeAreaView } from "react-native";
 import { Avatar, HStack, Heading, Text, VStack, View } from "native-base";
-import { darkModeBackgroundColor } from "../../styles/theme";
 import HeaderComponent from "../../components/shared/header/header.component";
 import { AVATAR_SRC } from "../../config/dummy";
+import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 
 export default function ProfileScreen({ navigation }: { navigation: any }) {
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: darkModeBackgroundColor,
-      }}
-    >
+    <SafeAreaWrapperComponent>
       <HeaderComponent
         navigation={navigation}
         title={"Profile"}
@@ -57,6 +51,6 @@ export default function ProfileScreen({ navigation }: { navigation: any }) {
           </VStack>
         </HStack>
       </HStack>
-    </SafeAreaView>
+    </SafeAreaWrapperComponent>
   );
 }

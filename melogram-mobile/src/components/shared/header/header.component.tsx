@@ -59,7 +59,6 @@ export default function HeaderComponent(props: {
         </Text>
       </HStack>
 
-      <HStack flex={1} alignItems={"center"}></HStack>
       {showActionButtons ? (
         <>
           <View>
