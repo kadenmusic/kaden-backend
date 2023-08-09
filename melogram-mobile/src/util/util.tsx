@@ -22,6 +22,9 @@ export const getIcon = (route: RouteProp<ParamListBase, string>) => {
       case "Charts":
         iconName = focused ? "stats-chart" : "stats-chart-outline";
         break;
+      case "Search":
+        iconName = focused ? "search" : "search-outline";
+        break;
       default:
         "";
     }

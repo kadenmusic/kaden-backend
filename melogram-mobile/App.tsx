@@ -14,6 +14,7 @@ import { getIcon } from "./src/util/util";
 import ChartsScreen from "./src/screens/charts/charts.screen";
 import SettingsScreen from "./src/screens/settings/settings.screen";
 import ProfileScreen from "./src/screens/profile/profile.screen";
+import SearchScreen from "./src/screens/search/search.screen";
 
 export default function App() {
   const [fontsLoaded] = useFonts(CUSTOM_FONTS);
@@ -55,6 +56,11 @@ export default function App() {
         <Tab.Screen
           name="Charts"
           component={ChartsScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Search"
+          component={SearchScreen}
           options={{ headerShown: false }}
         />
         <Tab.Screen
