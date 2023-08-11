@@ -3,6 +3,7 @@ import HeaderComponent from "../../components/shared/header/header.component";
 import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import TextInputComponent from "../../components/shared/text-input/text-input.component";
 
 export default function SearchScreen({ navigation }: { navigation: any }) {
   return (
@@ -21,24 +22,8 @@ export default function SearchScreen({ navigation }: { navigation: any }) {
         space={5}
         alignSelf="center"
       >
-        <Input
-          placeholder="Search for a user..."
-          fontSize={14}
-          variant={"filled"}
-          bg={"#1A202C"}
-          width="100%"
-          borderColor={"transparent"}
-          color={"white"}
-          _input={{
-            selectionColor: "white",
-            cursorColor: "white",
-          }}
-          _focus={{
-            borderColor: "gray.700",
-          }}
-          height="45px"
-          borderRadius="5"
-          InputLeftElement={
+        <TextInputComponent
+          inputLeftElement={
             <Icon
               ml="2"
               size="5"
@@ -46,6 +31,8 @@ export default function SearchScreen({ navigation }: { navigation: any }) {
               as={<Ionicons name="search" />}
             />
           }
+          width="100%"
+          placeholder="Search for a user..."
         />
       </VStack>
     </SafeAreaWrapperComponent>

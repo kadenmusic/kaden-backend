@@ -1,6 +1,15 @@
-import { Avatar, HStack, Heading, Text, VStack, View } from "native-base";
+import {
+  Avatar,
+  Box,
+  FlatList,
+  HStack,
+  Heading,
+  Text,
+  VStack,
+  View,
+} from "native-base";
 import HeaderComponent from "../../components/shared/header/header.component";
-import { AVATAR_SRC } from "../../config/dummy";
+import { AVATAR_SRC, dummyPostData } from "../../config/dummy";
 import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 
 export default function ProfileScreen({ navigation }: { navigation: any }) {
@@ -34,7 +43,8 @@ export default function ProfileScreen({ navigation }: { navigation: any }) {
           paddingLeft={5}
           paddingRight={5}
           width="100%"
-          flex={1}
+          height="50px"
+          // flex={1}
           justifyContent={"space-around"}
         >
           <VStack width={150} alignItems={"center"}>
@@ -49,6 +59,39 @@ export default function ProfileScreen({ navigation }: { navigation: any }) {
             <Text fontWeight={"700"}>90</Text>
             <Text color="gray.500">Following</Text>
           </VStack>
+        </HStack>
+        <HStack
+          flex={1}
+          width={"100%"}
+          flexDirection={"column"}
+          paddingLeft={5}
+          marginTop={2}
+          paddingRight={5}
+          paddingBottom={5}
+        >
+          <Heading mb={2}>Posts</Heading>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
+            data={dummyPostData}
+            renderItem={({ item }) => (
+              <Box
+                height="60px"
+                borderBottomWidth="1"
+                borderBottomColor={"gray.500"}
+              >
+                <Text fontSize={18} fontWeight={700}>
+                  Victory Dance
+                </Text>
+                <View style={{ flexDirection: "row" }}>
+                  <Text color="gray.500">by </Text>
+                  <Text color="gray.500"> </Text>
+                  <Text fontWeight={500}>My Morning Jacket</Text>
+                </View>
+              </Box>
+            )}
+            keyExtractor={(item) => item.id}
+          />
         </HStack>
       </HStack>
     </SafeAreaWrapperComponent>

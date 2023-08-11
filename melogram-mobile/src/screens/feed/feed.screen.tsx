@@ -2,16 +2,12 @@ import {
   View,
   Text,
   HStack,
-  Icon,
-  IconButton,
   FlatList,
   Box,
   Avatar,
   VStack,
-  Spacer,
   Image,
   Heading,
-  Skeleton,
 } from "native-base";
 import { darkModePostBackgroundColor } from "../../styles/theme";
 import { RefreshControl } from "react-native";

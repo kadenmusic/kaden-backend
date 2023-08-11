@@ -27,11 +27,12 @@ export default function HomeNavigatorComponent() {
         component={FeedScreen}
         options={{ headerShown: false }}
       />
-      <Tab.Screen
+      {/* We'll implement this later */}
+      {/* <Tab.Screen
         name="Charts"
         component={ChartsScreen}
         options={{ headerShown: false }}
-      />
+      /> */}
       <Tab.Screen
         name="Search"
         component={SearchScreen}
