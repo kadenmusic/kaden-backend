@@ -7,14 +7,18 @@ import { IconLibraryType } from "../../../config/enums";
 export default function HeaderComponent(props: {
   title: string;
   navigation: any;
-  showProfile?: boolean;
+  showActionButtons?: boolean;
   showBackButton?: boolean;
 }) {
-  const { showProfile = true } = props;
+  const { showActionButtons = true } = props;
   const { showBackButton = false } = props;
 
   const goToProfileScreen = () => {
     props.navigation.navigate("Profile");
+  };
+
+  const goToNotificationsScreen = () => {
+    props.navigation.navigate("Notifications");
   };
 
   const handleGoBack = () => {
@@ -55,27 +59,47 @@ export default function HeaderComponent(props: {
         </Text>
       </HStack>
 
-      <HStack flex={1} alignItems={"center"}></HStack>
-      {showProfile ? (
-        <View>
-          <IconButton
-            onPress={goToProfileScreen}
-            marginRight={-3}
-            marginTop={1}
-            icon={<Icon as={Ionicons} name="person-circle-outline" />}
-            _icon={{
-              color: "gray.500",
-              size: "3xl",
-            }}
-            _pressed={{
-              bg: "transparent",
-              _icon: {
-                color: "white",
-                name: "person-circle-outline",
-              },
-            }}
-          />
-        </View>
+      {showActionButtons ? (
+        <>
+          <View>
+            <IconButton
+              onPress={goToNotificationsScreen}
+              marginRight={-3}
+              marginTop={1}
+              icon={<Icon as={Ionicons} name="notifications-outline" />}
+              _icon={{
+                color: "gray.500",
+                size: "2xl",
+              }}
+              _pressed={{
+                bg: "transparent",
+                _icon: {
+                  color: "white",
+                  name: "notifications-outline",
+                },
+              }}
+            />
+          </View>
+          <View>
+            <IconButton
+              onPress={goToProfileScreen}
+              marginRight={-3}
+              marginTop={1}
+              icon={<Icon as={Ionicons} name="person-circle-outline" />}
+              _icon={{
+                color: "gray.500",
+                size: "2xl",
+              }}
+              _pressed={{
+                bg: "transparent",
+                _icon: {
+                  color: "white",
+                  name: "person-circle-outline",
+                },
+              }}
+            />
+          </View>
+        </>
       ) : (
         <></>
       )}

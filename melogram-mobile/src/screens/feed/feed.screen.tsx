@@ -2,28 +2,22 @@ import {
   View,
   Text,
   HStack,
-  Icon,
-  IconButton,
   FlatList,
   Box,
   Avatar,
   VStack,
-  Spacer,
   Image,
   Heading,
-  Skeleton,
 } from "native-base";
-import {
-  darkModeBackgroundColor,
-  darkModePostBackgroundColor,
-} from "../../styles/theme";
-import { RefreshControl, SafeAreaView, TouchableOpacity } from "react-native";
+import { darkModePostBackgroundColor } from "../../styles/theme";
+import { RefreshControl } from "react-native";
 import { useCallback, useState } from "react";
 import { dummyPostData } from "../../config/dummy";
 import IconButtonComponent from "../../components/shared/icon-button/icon-button.component";
 import { IconLibraryType } from "../../config/enums";
 import * as Helpers from "../../helpers/helpers";
 import HeaderComponent from "../../components/shared/header/header.component";
+import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 
 export default function FeedScreen({ navigation }: { navigation: any }) {
   const listHeight = Helpers.getScrollViewHeight();
@@ -38,12 +32,7 @@ export default function FeedScreen({ navigation }: { navigation: any }) {
   }, []);
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: darkModeBackgroundColor,
-      }}
-    >
+    <SafeAreaWrapperComponent>
       <HeaderComponent navigation={navigation} title={"Your Feed"} />
       <View paddingLeft={5} paddingRight={5}>
         <FlatList
@@ -156,6 +145,6 @@ export default function FeedScreen({ navigation }: { navigation: any }) {
           keyExtractor={(item) => item.id}
         />
       </View>
-    </SafeAreaView>
+    </SafeAreaWrapperComponent>
   );
 }

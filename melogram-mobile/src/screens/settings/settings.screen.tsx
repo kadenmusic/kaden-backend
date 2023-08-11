@@ -1,9 +1,9 @@
 import { View, FlatList } from "native-base";
-import { colors, darkModeBackgroundColor } from "../../styles/theme";
-import { SafeAreaView } from "react-native";
+import { colors } from "../../styles/theme";
 import * as Helpers from "../../helpers/helpers";
 import SettingsButtonComponent from "../../components/settings/settings-button.component";
 import HeaderComponent from "../../components/shared/header/header.component";
+import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 
 export default function SettingsScreen({ navigation }: { navigation: any }) {
   const scrollViewHeight = Helpers.getScrollViewHeight();
@@ -36,15 +36,10 @@ export default function SettingsScreen({ navigation }: { navigation: any }) {
   ];
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: darkModeBackgroundColor,
-      }}
-    >
+    <SafeAreaWrapperComponent>
       <HeaderComponent
         title={"Settings"}
-        showProfile={false}
+        showActionButtons={false}
         navigation={navigation}
       />
       <FlatList
@@ -56,6 +51,6 @@ export default function SettingsScreen({ navigation }: { navigation: any }) {
         data={buttons}
         renderItem={({ item }) => item}
       />
-    </SafeAreaView>
+    </SafeAreaWrapperComponent>
   );
 }
