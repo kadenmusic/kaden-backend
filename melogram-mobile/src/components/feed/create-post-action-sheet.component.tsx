@@ -1,29 +1,59 @@
 import { Actionsheet, Box, Flex, Icon, Text } from "native-base";
 import { Entypo, Ionicons } from "@expo/vector-icons";
+import TextInputComponent from "../shared/text-input/text-input.component";
 
 export default function CreatePostActionSheetComponent(props: any) {
-  const musicSocialConnected = false;
+  const musicSocialConnected = true;
+  const bg = "#1A202C";
 
   return (
     <Actionsheet isOpen={props.isOpen} onClose={props.onClose}>
       {musicSocialConnected ? (
-        <Actionsheet.Content>
-          <Box w="100%" h={60} px={4} justifyContent="center">
-            <Text
-              fontSize="16"
-              color="gray.500"
-              _dark={{
-                color: "gray.300",
-              }}
-            >
-              Albums
-            </Text>
-          </Box>
-          <Actionsheet.Item>Delete</Actionsheet.Item>
-          <Actionsheet.Item isDisabled>Share</Actionsheet.Item>
-          <Actionsheet.Item>Play</Actionsheet.Item>
-          <Actionsheet.Item>Favourite</Actionsheet.Item>
-          <Actionsheet.Item>Cancel</Actionsheet.Item>
+        <Actionsheet.Content bg={bg}>
+          <TextInputComponent
+            inputLeftElement={
+              <Icon
+                ml="2"
+                size="5"
+                color="gray.400"
+                as={<Ionicons name="search" />}
+              />
+            }
+            width="100%"
+            placeholder="Search for a song..."
+          />
+          <Actionsheet.Item
+            _pressed={{
+              backgroundColor: "gray.700",
+            }}
+            bg={bg}
+          >
+            <Text fontSize={16}>Test</Text>
+          </Actionsheet.Item>
+          <Actionsheet.Item
+            _pressed={{
+              backgroundColor: "gray.700",
+            }}
+            bg={bg}
+          >
+            <Text fontSize={16}>Test</Text>
+          </Actionsheet.Item>
+          <Actionsheet.Item
+            _pressed={{
+              backgroundColor: "gray.700",
+            }}
+            bg={bg}
+          >
+            <Text fontSize={16}>Test</Text>
+          </Actionsheet.Item>
+          <Actionsheet.Item
+            _pressed={{
+              backgroundColor: "gray.700",
+            }}
+            bg={bg}
+          >
+            <Text fontSize={16}>Test</Text>
+          </Actionsheet.Item>
         </Actionsheet.Content>
       ) : (
         <Actionsheet.Content>

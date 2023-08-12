@@ -40,7 +40,10 @@ export default function PostedFeedComponent(props: any) {
   return (
     <View justifyContent={"center"} alignItems={"center"} height={listHeight}>
       <Box mt={-9} width={"100%"}>
-        <Heading mb={9}>You haven't posted yet today.</Heading>
+        <Heading mb={3}>You haven't posted yet today.</Heading>
+        <Text color="gray.400" fontSize={18} mb={9}>
+          To see other people's posts, post a song.
+        </Text>
         <ActionButtonComponent onPress={onOpen} buttonText="Post Song" />
       </Box>
       <CreatePostActionSheetComponent
