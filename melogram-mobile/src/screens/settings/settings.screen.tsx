@@ -1,7 +1,7 @@
 import { View, FlatList } from "native-base";
 import { colors } from "../../styles/theme";
 import * as Helpers from "../../helpers/helpers";
-import SettingsButtonComponent from "../../components/settings/settings-button.component";
+import FlatButtonComponent from "../../components/shared/flat-button/flat-button.component";
 import HeaderComponent from "../../components/shared/header/header.component";
 import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 
@@ -9,23 +9,23 @@ export default function SettingsScreen({ navigation }: { navigation: any }) {
   const scrollViewHeight = Helpers.getScrollViewHeight();
 
   const buttons = [
-    <SettingsButtonComponent
+    <FlatButtonComponent
       buttonText="Linked Accounts"
       iconName="musical-notes-outline"
     />,
-    <SettingsButtonComponent
+    <FlatButtonComponent
       buttonText="Notifications"
       iconName="notifications-outline"
     />,
-    <SettingsButtonComponent
+    <FlatButtonComponent
       buttonText="Account Information"
       iconName="list-outline"
     />,
-    <SettingsButtonComponent
+    <FlatButtonComponent
       buttonText="Edit Profile"
       iconName="person-circle-outline"
     />,
-    <SettingsButtonComponent
+    <FlatButtonComponent
       buttonText="Log Out"
       iconName="log-out-outline"
       iconColor={colors.red[400]}

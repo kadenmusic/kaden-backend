@@ -5,19 +5,29 @@ import HomeNavigatorComponent from "./home-navigator.component";
 import ProfileScreen from "../../screens/profile/profile.screen";
 import LoginScreen from "../../screens/login/login.screen";
 import NotificationsScreen from "../../screens/notifications/notifications.screen";
+import GetStartedScreen from "../../screens/get-started/get-started.screen";
 
 export default function AppNavigatorComponent() {
   const Stack = createNativeStackNavigator();
 
-  const dummyToken = false;
+  const loggedIn = false;
 
   return (
     <NavigationContainer>
       <StatusBar barStyle={"light-content"} />
 
-      {dummyToken ? (
+      {!loggedIn ? (
         <Stack.Navigator>
-          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="GetStarted"
+            component={GetStartedScreen}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Login"
+            component={LoginScreen}
+          />
         </Stack.Navigator>
       ) : (
         <Stack.Navigator>

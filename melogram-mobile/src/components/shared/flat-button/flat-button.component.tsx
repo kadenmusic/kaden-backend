@@ -3,7 +3,7 @@ import { TouchableOpacity, StyleSheet } from "react-native";
 import { View, Text, Image } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
-const SettingsButtonComponent = (props: any) => {
+const FlatButtonComponent = (props: any) => {
   const { showArrow = true } = props;
   const { textFontWeight = 400 } = props;
 
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
   rightContent: {},
 });
 
-export default SettingsButtonComponent;
+export default FlatButtonComponent;
