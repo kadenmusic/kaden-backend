@@ -1,9 +1,9 @@
-import { Actionsheet, Box, Flex, Icon, Text } from "native-base";
+import { Actionsheet, Flex, Icon, Text } from "native-base";
 import { Entypo, Ionicons } from "@expo/vector-icons";
 import TextInputComponent from "../shared/text-input/text-input.component";
 
 export default function CreatePostActionSheetComponent(props: any) {
-  const musicSocialConnected = true;
+  const musicSocialConnected = false;
   const bg = "#1A202C";
 
   return (

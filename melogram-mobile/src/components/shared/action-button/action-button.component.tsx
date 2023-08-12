@@ -18,13 +18,17 @@ const ActionButtonComponent = (props: any) => {
           />
         ) : null}
 
-        <Text
-          fontWeight={textFontWeight}
-          color={props.textColor || "black"}
-          style={styles.buttonText}
-        >
-          {props.buttonText}
-        </Text>
+        {props.innerContent ? (
+          props.innerContent
+        ) : (
+          <Text
+            fontWeight={textFontWeight}
+            color={props.textColor || "black"}
+            style={styles.buttonText}
+          >
+            {props.buttonText}
+          </Text>
+        )}
       </View>
     </TouchableOpacity>
   );
