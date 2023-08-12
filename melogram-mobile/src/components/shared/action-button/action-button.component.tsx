@@ -3,38 +3,29 @@ import { TouchableOpacity, StyleSheet } from "react-native";
 import { View, Text, Image } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
-const SettingsButtonComponent = (props: any) => {
-  const { showArrow = true } = props;
-  const { textFontWeight = 400 } = props;
+const ActionButtonComponent = (props: any) => {
+  const { textFontWeight = 600 } = props;
 
   return (
     <TouchableOpacity style={styles.buttonContainer}>
       <View style={styles.leftContent}>
-        <Ionicons
-          name={props.iconName}
-          size={24}
-          color={props.iconColor || "white"}
-          style={styles.leftIcon}
-        />
+        {props.iconName ? (
+          <Ionicons
+            name={props.iconName}
+            size={24}
+            color={props.iconColor || "black"}
+            style={styles.leftIcon}
+          />
+        ) : null}
+
         <Text
           fontWeight={textFontWeight}
-          color={props.textColor || "white"}
+          color={props.textColor || "black"}
           style={styles.buttonText}
         >
           {props.buttonText}
         </Text>
       </View>
-      {showArrow ? (
-        <View style={styles.rightContent}>
-          <Ionicons
-            name="chevron-forward"
-            size={24}
-            color={props.iconColor || "white"}
-          />
-        </View>
-      ) : (
-        <></>
-      )}
     </TouchableOpacity>
   );
 };
@@ -43,11 +34,11 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#1A202C",
+    justifyContent: "center",
+    backgroundColor: "white",
     height: 60,
     paddingHorizontal: 20,
-    borderRadius: 10,
+    borderRadius: 40,
   },
   leftContent: {
     flexDirection: "row",
@@ -64,4 +55,4 @@ const styles = StyleSheet.create({
   rightContent: {},
 });
 
-export default SettingsButtonComponent;
+export default ActionButtonComponent;
