@@ -7,7 +7,7 @@ const ActionButtonComponent = (props: any) => {
   const { textFontWeight = 600 } = props;
 
   return (
-    <TouchableOpacity style={styles.buttonContainer}>
+    <TouchableOpacity {...props} style={styles.buttonContainer}>
       <View style={styles.leftContent}>
         {props.iconName ? (
           <Ionicons

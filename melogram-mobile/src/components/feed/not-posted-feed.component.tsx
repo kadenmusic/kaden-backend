@@ -9,6 +9,8 @@ import {
   HStack,
   Heading,
   Center,
+  Actionsheet,
+  useDisclose,
 } from "native-base";
 import { useCallback, useState } from "react";
 import { RefreshControl } from "react-native";
@@ -19,6 +21,7 @@ import IconButtonComponent from "../shared/icon-button/icon-button.component";
 import * as Helpers from "../../helpers/helpers";
 import FlatButtonComponent from "../shared/flat-button/flat-button.component";
 import ActionButtonComponent from "../shared/action-button/action-button.component";
+import CreatePostActionSheetComponent from "./create-post-action-sheet.component";
 
 export default function PostedFeedComponent(props: any) {
   const listHeight = Helpers.getScrollViewHeight();
@@ -32,12 +35,18 @@ export default function PostedFeedComponent(props: any) {
     }, 2000);
   }, []);
 
+  const { isOpen, onOpen, onClose } = useDisclose();
+
   return (
     <View justifyContent={"center"} alignItems={"center"} height={listHeight}>
       <Box mt={-9} width={"100%"}>
         <Heading mb={9}>You haven't posted yet today.</Heading>
-        <ActionButtonComponent buttonText="Post Song" />
+        <ActionButtonComponent onPress={onOpen} buttonText="Post Song" />
       </Box>
+      <CreatePostActionSheetComponent
+        isOpen={isOpen}
+        onClose={onClose}
+      ></CreatePostActionSheetComponent>
     </View>
   );
 }
