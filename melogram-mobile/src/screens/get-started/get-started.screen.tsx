@@ -6,6 +6,7 @@ import FlatButtonComponent from "../../components/shared/flat-button/flat-button
 import HeaderComponent from "../../components/shared/header/header.component";
 import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 import ActionButtonComponent from "../../components/shared/action-button/action-button.component";
+import { useAuthStore } from "../../state/auth/auth.store";
 
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
   return (
