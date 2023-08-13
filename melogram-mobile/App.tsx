@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect } from "react";
 import { NativeBaseProvider, Center, Text, View, StatusBar } from "native-base";
 import { useFonts } from "expo-font";
+import { Provider } from "react-redux";
 import * as SplashScreen from "expo-splash-screen";
 import { CUSTOM_FONTS } from "./src/config/constants";
 import * as Font from "expo-font";
 import { theme } from "./src/styles/theme";
 import AppNavigatorComponent from "./src/components/navigation/app-navigator.component";
+import { store } from "./src/state/store";
 
 export default function App() {
   const [appReady, setAppReady] = React.useState(false);
@@ -34,7 +36,9 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={theme}>
-      <AppNavigatorComponent />
+      <Provider store={store}>
+        <AppNavigatorComponent />
+      </Provider>
     </NativeBaseProvider>
   );
 }

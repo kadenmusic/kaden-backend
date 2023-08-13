@@ -6,8 +6,14 @@ import FlatButtonComponent from "../../components/shared/flat-button/flat-button
 import HeaderComponent from "../../components/shared/header/header.component";
 import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 import ActionButtonComponent from "../../components/shared/action-button/action-button.component";
+import { RootState } from "../../state/store";
+import { useSelector, useDispatch } from "react-redux";
+import { setName } from "../../state/user.slice";
 
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
+  const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+
   return (
     <SafeAreaWrapperComponent>
       <HeaderComponent
@@ -28,7 +34,11 @@ export default function GetStartedScreen({ navigation }: { navigation: any }) {
           <Text color="gray.400" fontSize={18} mb={9}>
             Connect a social account to get started.
           </Text>
+          <Text>{user.name}</Text>
           <ActionButtonComponent
+            onPress={() => {
+              dispatch(setName("TEST"));
+            }}
             innerContent={
               <Flex
                 direction="row"
