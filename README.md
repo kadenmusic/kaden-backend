@@ -57,6 +57,12 @@ Future features will include top-posted songs by your friends, and a way to save
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Roadmap
+
+- [ ] Export feed as playlists
+- [ ] DMs for songs only, view songs sent by other users
+- [ ] Chart feature to view most posted songs by week, all time, etc.
+
 ## Built With
 
 - ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
