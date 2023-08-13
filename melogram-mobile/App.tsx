@@ -7,7 +7,6 @@ import { CUSTOM_FONTS } from "./src/config/constants";
 import * as Font from "expo-font";
 import { theme } from "./src/styles/theme";
 import AppNavigatorComponent from "./src/components/navigation/app-navigator.component";
-import { store } from "./src/state/store";
 
 export default function App() {
   const [appReady, setAppReady] = React.useState(false);
@@ -36,9 +35,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={theme}>
-      <Provider store={store}>
-        <AppNavigatorComponent />
-      </Provider>
+      <AppNavigatorComponent />
     </NativeBaseProvider>
   );
 }
