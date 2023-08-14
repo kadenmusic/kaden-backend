@@ -62,6 +62,7 @@ Future features will include top-posted songs by your friends, and a way to save
 - [ ] Export feed as playlists
 - [ ] DMs for songs only, view songs sent by other users
 - [ ] Chart feature to view most posted songs by week, all time, etc.
+- [ ] Platform-agnostic posting; clicking a song to open in app defaults to the app you are configured to use
 
 ## Built With
 
