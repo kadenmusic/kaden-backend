@@ -6,10 +6,13 @@ import ProfileScreen from "../../screens/profile/profile.screen";
 import LoginScreen from "../../screens/login/login.screen";
 import NotificationsScreen from "../../screens/notifications/notifications.screen";
 import GetStartedScreen from "../../screens/get-started/get-started.screen";
+import { useAuthStore } from "../../state/auth/auth.store";
 
 export default function AppNavigatorComponent() {
   const Stack = createNativeStackNavigator();
+  const authToken = useAuthStore((state: any) => state.authToken);
 
+  // const loggedIn = !!authToken;
   const loggedIn = false;
 
   return (
