@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "melogram-mobile",
-    "slug": "melogram-mobile",
+    "slug": "melogram",
     "scheme": "melogram-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,9 +12,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.melogram.melogram"
     },
     "android": {
       "adaptiveIcon": {
@@ -24,6 +27,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5230047e-4fce-4613-ace4-d20621e0f583"
+      }
+    },
+    "owner": "melogram"
   }
 }
