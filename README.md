@@ -21,10 +21,6 @@
 
 <div align="center">
 
-<a href="">[![Contributors][contributors-shield]][contributors-url]</a>
-<a href="">[![Issues][issues-shield]][issues-url]</a>
-<a href="">[![LinkedIn][linkedin-shield]][linkedin-url]</a>
-
 </div>
 
 <!-- PROJECT LOGO -->
