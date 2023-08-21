@@ -6,8 +6,8 @@ import { CUSTOM_FONTS } from "./src/config/constants";
 import * as Font from "expo-font";
 import { theme } from "./src/styles/theme";
 import AppNavigatorComponent from "./src/components/navigation/app-navigator.component";
-import { useSecureStore } from "./src/state/auth/hooks/use-secure-store.hook";
 import { useAuthStore } from "./src/state/auth/auth.store";
+import { useSecureStore } from "./src/services/secure-store/secure-store.service";
 
 export default function App() {
   const [appReady, setAppReady] = React.useState(false);
@@ -21,7 +21,6 @@ export default function App() {
       try {
         await Font.loadAsync(CUSTOM_FONTS);
         authToken = await getItemAsync("authToken");
-        console.log("userToken", authToken);
         setAuthToken(authToken);
       } catch (e) {
         console.log("Restoring token failed.");

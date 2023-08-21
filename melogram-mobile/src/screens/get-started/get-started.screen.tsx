@@ -6,43 +6,12 @@ import FlatButtonComponent from "../../components/shared/flat-button/flat-button
 import HeaderComponent from "../../components/shared/header/header.component";
 import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 import ActionButtonComponent from "../../components/shared/action-button/action-button.component";
-import { useAuthStore } from "../../state/auth/auth.store";
-import * as WebBrowser from "expo-web-browser";
-import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
-import { useEffect } from "react";
-
-WebBrowser.maybeCompleteAuthSession();
-
-// Endpoint
-const discovery = {
-  authorizationEndpoint: "https://accounts.spotify.com/authorize",
-  tokenEndpoint: "https://accounts.spotify.com/api/token",
-};
+import { useMusicAppAuth } from "../../services/auth/auth.service";
+import { MusicProviderType } from "../../config/enums";
 
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
-  const [request, response, promptAsync] = useAuthRequest(
-    {
-      clientId: "4410784367c941de899fa9285967971b",
-      scopes: ["user-read-email", "playlist-modify-public"],
-      // In order to follow the "Authorization Code Flow" to fetch token after authorizationEndpoint
-      // this must be set to false
-      usePKCE: false,
-      redirectUri: "exp://localhost:8081/--/spotify-auth-callback",
-      // TODO: Create proper schemes for prod, etc.
-      // redirectUri: makeRedirectUri({
-      //   scheme: "melogram-mobile",
-      //   path: "redirect",
-      // }),
-    },
-    discovery,
-  );
-
-  useEffect(() => {
-    if (response?.type === "success") {
-      const { code } = response.params;
-      console.log(code);
-    }
-  }, [response]);
+  const spotifyAuth = useMusicAppAuth(MusicProviderType.Spotify);
+  const appleMusicAuth = useMusicAppAuth(MusicProviderType.AppleMusic);
 
   return (
     <SafeAreaWrapperComponent>
@@ -66,7 +35,7 @@ export default function GetStartedScreen({ navigation }: { navigation: any }) {
           </Text>
           <ActionButtonComponent
             onPress={() => {
-              promptAsync();
+              spotifyAuth.promptAsync();
             }}
             innerContent={
               <Flex
