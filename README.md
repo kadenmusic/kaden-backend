@@ -31,16 +31,6 @@
   </a>
 
   <h3 align="center">Melogram: Daily Music Sharing</h3>
-
-  <p align="center">
-    Daily music sharing with your friends.
-    <br />
-    <a href="https://google.com">View Demo</a>
-    ·
-    <a href="https://google.com">Report Bug</a>
-    ·
-    <a href="https://google.com">Request Feature</a>
-  </p>
 </div>
 
 <!-- ABOUT THE PROJECT -->
