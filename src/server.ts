@@ -105,6 +105,9 @@ const app = express()
     (req: Request, res: Response) =>
       res.sendFile("apple-app-site-association", { root: "./src/public" }),
   )
+  .get("/--/spotify-auth-callback", (req: Request, res: Response) =>
+    res.send(200),
+  )
   .get("/db", async (req: Request, res: Response) => {
     // const transaction = Sentry.startTransaction({
     //   op: "test",
