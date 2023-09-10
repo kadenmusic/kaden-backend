@@ -12,11 +12,12 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
   switch (provider) {
     case MusicProviderType.Spotify:
       discovery = {
-        authorizationEndpoint: "https://accounts.spotify.com/authorize",
-        tokenEndpoint: "https://accounts.spotify.com/api/token",
+        authorizationEndpoint:
+          process.env.EXPO_PUBLIC_SPOTIFY_AUTHORIZATION_ENDPOINT!,
+        tokenEndpoint: process.env.EXPO_PUBLIC_SPOTIFY_TOKEN_ENDPOINT!,
       };
-      clientId = "4410784367c941de899fa9285967971b";
-      redirectUri = "exp://localhost:8081/--/spotify-auth-callback";
+      clientId = process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID!;
+      redirectUri = process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!;
       scopes = ["user-read-email", "playlist-modify-public"];
       break;
     case MusicProviderType.AppleMusic:
