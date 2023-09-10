@@ -100,6 +100,11 @@ const app = express()
   .get("/client.js", (req: Request, res: Response) =>
     res.sendFile("client.js", { root: "./src/public" }),
   )
+  .get(
+    "/.well-known/apple-app-site-association",
+    (req: Request, res: Response) =>
+      res.sendFile("apple-app-site-association", { root: "./src/public" }),
+  )
   .get("/db", async (req: Request, res: Response) => {
     // const transaction = Sentry.startTransaction({
     //   op: "test",

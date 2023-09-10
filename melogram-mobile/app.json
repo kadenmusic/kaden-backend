@@ -12,12 +12,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.melogram.melogram"
+      "bundleIdentifier": "com.melogram.melogram",
+      "associatedDomains": ["applinks:melogram-0c54721ba3c2.herokuapp.com"]
     },
     "android": {
       "adaptiveIcon": {

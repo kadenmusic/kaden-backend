@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "GG5S3A62X8.com.melogram.melogram",
+        "paths": [
+          "/--/spotify-auth-callback"
+        ]
+      }
+    ]
+  },
+  "activitycontinuation": {
+    "apps": [
+      "GG5S3A62X8.com.melogram.melogram"
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "GG5S3A62X8.com.melogram.melogram"
+    ]
+  }
+}
