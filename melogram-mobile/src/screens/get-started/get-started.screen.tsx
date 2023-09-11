@@ -30,6 +30,7 @@ export default function GetStartedScreen({ navigation }: { navigation: any }) {
       >
         <Box width={"100%"}>
           <Heading mb={3}>Welcome to Melogram.</Heading>
+          <Heading mb={3}>{process.env.NODE_ENV}</Heading>
           <Text color="gray.400" fontSize={18} mb={9}>
             Connect a social account to get started.
           </Text>
