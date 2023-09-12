@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 
 import { MusicProviderType } from "../../config/enums";
 import { useAuthRequest, makeRedirectUri } from "expo-auth-session";
+import Constants from "expo-constants";
+
+const APP_SCHEME = Constants.expoConfig?.scheme;
 
 export const useMusicAppAuth = (provider: MusicProviderType) => {
   let discovery: any;
@@ -9,12 +12,9 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
   let clientId: string;
   let scopes: string[];
 
-  console.log(
-    makeRedirectUri({
-      scheme: "melogram-mobile",
-      path: "redirect",
-    }),
-  );
+  redirectUri = makeRedirectUri({
+    native: `${APP_SCHEME}://redirect`,
+  });
 
   switch (provider) {
     case MusicProviderType.Spotify:
@@ -24,13 +24,15 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
         tokenEndpoint: process.env.EXPO_PUBLIC_SPOTIFY_TOKEN_ENDPOINT!,
       };
       clientId = process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID!;
-      redirectUri =
-        process.env.NODE_ENV === "development"
-          ? process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!
-          : makeRedirectUri({
-              scheme: "melogram-mobile",
-              path: "redirect",
-            });
+
+      redirectUri = redirectUri;
+      // redirectUri =
+      //   process.env.NODE_ENV === "development"
+      //     ? process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!
+      //     : makeRedirectUri({
+      //         path: "redirect",
+      //       });
+
       redirectUri = process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!;
       scopes = ["user-read-email", "playlist-modify-public"];
       break;

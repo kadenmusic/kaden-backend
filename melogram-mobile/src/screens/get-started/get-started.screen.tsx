@@ -10,9 +10,17 @@ import { useMusicAppAuth } from "../../services/auth/auth.service";
 import { MusicProviderType } from "../../config/enums";
 import { makeRedirectUri } from "expo-auth-session";
 
+import Constants from "expo-constants";
+
+const APP_SCHEME = Constants.expoConfig?.scheme;
+
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
   const spotifyAuth = useMusicAppAuth(MusicProviderType.Spotify);
   const appleMusicAuth = useMusicAppAuth(MusicProviderType.AppleMusic);
+
+  const redirectUri = makeRedirectUri({
+    native: `${APP_SCHEME}://redirect`,
+  });
 
   return (
     <SafeAreaWrapperComponent>
@@ -31,13 +39,10 @@ export default function GetStartedScreen({ navigation }: { navigation: any }) {
       >
         <Box width={"100%"}>
           <Heading mb={3}>Welcome to Melogram.</Heading>
-          <Heading mb={3}>{process.env.NODE_ENV}</Heading>
-          <Heading mb={3}>
-            {makeRedirectUri({
-              scheme: "melogram-mobile",
-              path: "redirect",
-            })}
-          </Heading>
+
+          <Heading mb={3}>env: {process.env.NODE_ENV}</Heading>
+          <Heading mb={3}>redirect uri: {redirectUri}</Heading>
+
           <Text color="gray.400" fontSize={18} mb={9}>
             Connect a social account to get started.
           </Text>

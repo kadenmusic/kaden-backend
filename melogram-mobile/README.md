@@ -1,6 +1,7 @@
 Build:
 
 - `eas build --platform ios`
+- `eas build --profile development-simulator --platform ios`
 
 Submit:
 
