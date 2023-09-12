@@ -8,7 +8,7 @@ export const dummyPostData = [
     author: {
       first: "Steve",
       last: "Jobs",
-      username: "ettep",
+      username: "Steven Penava",
     },
     track: {
       title: "Test Track Title",

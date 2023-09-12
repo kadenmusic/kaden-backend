@@ -8,6 +8,7 @@ import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/
 import ActionButtonComponent from "../../components/shared/action-button/action-button.component";
 import { useMusicAppAuth } from "../../services/auth/auth.service";
 import { MusicProviderType } from "../../config/enums";
+import { makeRedirectUri } from "expo-auth-session";
 
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
   const spotifyAuth = useMusicAppAuth(MusicProviderType.Spotify);
@@ -31,6 +32,12 @@ export default function GetStartedScreen({ navigation }: { navigation: any }) {
         <Box width={"100%"}>
           <Heading mb={3}>Welcome to Melogram.</Heading>
           <Heading mb={3}>{process.env.NODE_ENV}</Heading>
+          <Heading mb={3}>
+            {makeRedirectUri({
+              scheme: "melogram-mobile",
+              path: "redirect",
+            })}
+          </Heading>
           <Text color="gray.400" fontSize={18} mb={9}>
             Connect a social account to get started.
           </Text>

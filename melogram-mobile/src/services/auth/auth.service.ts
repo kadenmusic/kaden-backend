@@ -9,6 +9,13 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
   let clientId: string;
   let scopes: string[];
 
+  console.log(
+    makeRedirectUri({
+      scheme: "melogram-mobile",
+      path: "redirect",
+    }),
+  );
+
   switch (provider) {
     case MusicProviderType.Spotify:
       discovery = {
@@ -21,6 +28,7 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
         process.env.NODE_ENV === "development"
           ? process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!
           : makeRedirectUri({
+              scheme: "melogram-mobile",
               path: "redirect",
             });
       redirectUri = process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!;
