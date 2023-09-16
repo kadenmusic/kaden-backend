@@ -16,6 +16,8 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
     native: `${APP_SCHEME}://redirect`,
   });
 
+  console.log(redirectUri);
+
   switch (provider) {
     case MusicProviderType.Spotify:
       discovery = {
@@ -33,7 +35,7 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
       //         path: "redirect",
       //       });
 
-      redirectUri = process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!;
+      // redirectUri = process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!;
       scopes = ["user-read-email", "playlist-modify-public"];
       break;
     case MusicProviderType.AppleMusic:
@@ -55,6 +57,9 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
       scopes: scopes,
       usePKCE: false,
       redirectUri: redirectUri,
+      extraParams: {
+        show_dialog: "true",
+      },
     },
     discovery,
   );

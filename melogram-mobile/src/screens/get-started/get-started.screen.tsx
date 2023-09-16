@@ -42,6 +42,9 @@ export default function GetStartedScreen({ navigation }: { navigation: any }) {
 
           <Heading mb={3}>env: {process.env.NODE_ENV}</Heading>
           <Heading mb={3}>redirect uri: {redirectUri}</Heading>
+          <Heading mb={3}>
+            client id: {process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID}
+          </Heading>
 
           <Text color="gray.400" fontSize={18} mb={9}>
             Connect a social account to get started.
