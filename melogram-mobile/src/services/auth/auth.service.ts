@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { MusicProviderType } from "../../config/enums";
 import { useAuthRequest, makeRedirectUri } from "expo-auth-session";
@@ -13,10 +13,8 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
   let scopes: string[];
 
   redirectUri = makeRedirectUri({
-    native: `${APP_SCHEME}://redirect`,
+    native: process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!,
   });
-
-  console.log(redirectUri);
 
   switch (provider) {
     case MusicProviderType.Spotify:
@@ -26,16 +24,7 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
         tokenEndpoint: process.env.EXPO_PUBLIC_SPOTIFY_TOKEN_ENDPOINT!,
       };
       clientId = process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID!;
-
       redirectUri = redirectUri;
-      // redirectUri =
-      //   process.env.NODE_ENV === "development"
-      //     ? process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!
-      //     : makeRedirectUri({
-      //         path: "redirect",
-      //       });
-
-      // redirectUri = process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!;
       scopes = ["user-read-email", "playlist-modify-public"];
       break;
     case MusicProviderType.AppleMusic:
