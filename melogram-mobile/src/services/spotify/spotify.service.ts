@@ -4,8 +4,7 @@ import {
   makeRedirectUri,
 } from "expo-auth-session";
 import { IMusicProviderService } from "../music-provider/music-provider-service.interface";
-import { ENVIRONMENT, SPOTIFIY_LOGIN_CODE_KEY } from "../../config/constants";
-import { setItemAsync } from "expo-secure-store";
+import { ENVIRONMENT } from "../../config/constants";
 
 class SpotifyService implements IMusicProviderService {
   constructor() {}

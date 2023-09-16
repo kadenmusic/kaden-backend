@@ -21,6 +21,3 @@ export const CUSTOM_FONTS = {
 };
 
 export const HEADER_HEIGHT = 75;
-
-// Secure Store Constants
-export const SPOTIFIY_LOGIN_CODE_KEY = "spotify_login_code";
