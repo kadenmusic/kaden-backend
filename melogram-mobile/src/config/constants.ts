@@ -1,3 +1,8 @@
+export const ENVIRONMENT = {
+  dev: "development",
+  prod: "production",
+};
+
 export const CUSTOM_FONTS = {
   "PlusJakartaSans-Regular": require("../../assets/fonts/PlusJakartaSans-Regular.ttf"),
   "PlusJakartaSans-Bold": require("../../assets/fonts/PlusJakartaSans-Bold.ttf"),
@@ -16,3 +21,6 @@ export const CUSTOM_FONTS = {
 };
 
 export const HEADER_HEIGHT = 75;
+
+// Secure Store Constants
+export const SPOTIFIY_LOGIN_CODE_KEY = "spotify_login_code";

@@ -12,7 +12,6 @@ const APP_SCHEME = Constants.expoConfig?.scheme;
 
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
   const spotifyAuth = useMusicAppAuth(MusicProviderType.Spotify);
-  const appleMusicAuth = useMusicAppAuth(MusicProviderType.AppleMusic);
 
   return (
     <SafeAreaWrapperComponent>
