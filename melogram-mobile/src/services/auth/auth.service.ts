@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { MusicProviderType } from "../../config/enums";
 import { useAuthRequest, makeRedirectUri } from "expo-auth-session";
+import Constants from "expo-constants";
+
+const APP_SCHEME = Constants.expoConfig?.scheme;
 
 export const useMusicAppAuth = (provider: MusicProviderType) => {
   let discovery: any;
@@ -9,12 +12,9 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
   let clientId: string;
   let scopes: string[];
 
-  console.log(
-    makeRedirectUri({
-      scheme: "melogram-mobile",
-      path: "redirect",
-    }),
-  );
+  redirectUri = makeRedirectUri({
+    native: process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!,
+  });
 
   switch (provider) {
     case MusicProviderType.Spotify:
@@ -24,14 +24,7 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
         tokenEndpoint: process.env.EXPO_PUBLIC_SPOTIFY_TOKEN_ENDPOINT!,
       };
       clientId = process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID!;
-      redirectUri =
-        process.env.NODE_ENV === "development"
-          ? process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!
-          : makeRedirectUri({
-              scheme: "melogram-mobile",
-              path: "redirect",
-            });
-      redirectUri = process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI!;
+      redirectUri = redirectUri;
       scopes = ["user-read-email", "playlist-modify-public"];
       break;
     case MusicProviderType.AppleMusic:
@@ -53,6 +46,9 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
       scopes: scopes,
       usePKCE: false,
       redirectUri: redirectUri,
+      extraParams: {
+        show_dialog: "true",
+      },
     },
     discovery,
   );
