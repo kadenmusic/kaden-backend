@@ -3,28 +3,20 @@ import { Entypo, Ionicons } from "@expo/vector-icons";
 import HeaderComponent from "../../components/shared/header/header.component";
 import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 import ActionButtonComponent from "../../components/shared/action-button/action-button.component";
-import { useMusicAppAuth } from "../../services/auth/auth.service";
+import { login, useMusicAppAuth } from "../../services/auth/auth.service";
 import { MusicProviderType } from "../../config/enums";
-import { useAppStore } from "../../state/app-state";
-// import { useAppState } from "../../state/app-state";
+import { useAppStore } from "../../state/app-store";
 
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
   const spotifyAuth = useMusicAppAuth(MusicProviderType.Spotify);
 
+  // const loading = useAppStore((state) => state.loading);
+  // const setLoading = useAppStore((state) => state.setLoading);
+  const loginWithProvider = useAppStore((state) => state.initiateProviderLogin);
+
+  const user = useAppStore((state) => state.user);
   const loading = useAppStore((state) => state.loading);
-  const setLoading = useAppStore((state) => state.setLoading);
   console.log("loading", loading);
-
-  // const bears = useAppStore((state) => state.bears);
-  // console.log("bears", bears);
-
-  // const useAppStore = useAppStore((state) => state.authToken);
-  // const appState = useAppState((state) => state.loading);
-  // console.log("appState", appState);
-
-  // const initiateLoginWithProvider = createAuthSlice(
-  //   (state: any) => state.initiateLoginWithProvider,
-  // );
 
   return (
     <SafeAreaWrapperComponent>
@@ -49,8 +41,7 @@ export default function GetStartedScreen({ navigation }: { navigation: any }) {
           </Text>
           <ActionButtonComponent
             onPress={() => {
-              setLoading(true);
-              // initiateLoginWithProvider(MusicProviderType.Spotify);
+              loginWithProvider(MusicProviderType.Spotify);
             }}
             innerContent={
               <Flex

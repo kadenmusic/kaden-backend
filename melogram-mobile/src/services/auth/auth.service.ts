@@ -6,6 +6,11 @@ import { useAuthRequest } from "expo-auth-session";
 import { MusicProviderManager } from "../../managers/music-provider/music-provider.manager";
 import { useSecureStore } from "../secure-store/secure-store.service";
 import { getSecureStoreKeyForProvider } from "../../helpers/helpers";
+import { useAppStore } from "../../state/app-store";
+
+export const login = async (provider: MusicProviderType) => {
+  // const nuts = useAppStore((state) => state.setLoading);
+};
 
 export const useMusicAppAuth = (provider: MusicProviderType) => {
   const { setItemAsync, getItemAsync } = useSecureStore();
@@ -14,11 +19,13 @@ export const useMusicAppAuth = (provider: MusicProviderType) => {
   // );
 
   // TODO: Put this in state or instantiate it somewhere else, once.
-  const musicProviderManger = new MusicProviderManager();
+  const musicProviderManger = new MusicProviderManager(
+    MusicProviderType.Spotify,
+  );
 
   const [request, response, promptAsync] = useAuthRequest(
-    musicProviderManger.getOauthRequestConfig(provider),
-    musicProviderManger.getOauthRequestDiscovery(provider),
+    musicProviderManger.getOauthRequestConfig(),
+    musicProviderManger.getOauthRequestDiscovery(),
   );
 
   useEffect(() => {

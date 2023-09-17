@@ -6,22 +6,24 @@ import { IMusicProviderManager } from "./music-provider-manager.interface";
 
 class MusicProviderManager implements IMusicProviderManager {
   private registry: Map<MusicProviderType, IMusicProviderService>;
+  private provider: IMusicProviderService;
 
-  constructor() {
+  constructor(provider: MusicProviderType) {
     this.registry = new Map<MusicProviderType, IMusicProviderService>();
     this.registry.set(MusicProviderType.Spotify, new SpotifyService());
+    this.provider = this.registry.get(provider)!;
   }
 
   public getRegistry(): Map<MusicProviderType, IMusicProviderService> {
     return this.registry;
   }
 
-  public getOauthRequestConfig(provider: MusicProviderType): AuthRequestConfig {
-    return this.registry.get(provider)!.getOauthRequestConfig();
+  public getOauthRequestConfig(): AuthRequestConfig {
+    return this.provider.getOauthRequestConfig();
   }
 
-  public getOauthRequestDiscovery(provider: MusicProviderType) {
-    return this.registry.get(provider)!.getOauthRequestDiscovery();
+  public getOauthRequestDiscovery() {
+    return this.provider.getOauthRequestDiscovery();
   }
 }
 

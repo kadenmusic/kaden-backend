@@ -1,50 +1,46 @@
-// import { StateCreator, create } from "zustand";
-// import { MusicProviderType } from "../../config/enums";
-// import { MusicProviderManager } from "../../managers/music-provider/music-provider.manager";
-// import { useAuthRequest } from "expo-auth-session";
-// import { CommonSlice } from "./common.slice";
+import { StateCreator } from "zustand";
+import { MusicProviderType } from "../../config/enums";
+import { CommonSlice, createCommonSlice } from "./common.slice";
+import { AppState } from "../app-store";
+import { MusicProviderManager } from "../../managers/music-provider/music-provider.manager";
 
-// const musicProviderManger = new MusicProviderManager();
+export interface AuthSlice {
+  user: any;
+  setUser: (user: any) => void;
 
-// interface AuthSlice {
-//   user: any;
-//   authToken: any;
-//   spotifyLoginCode: any;
-//   appleMusicLoginCode: any;
-//   initiateLoginWithProvider: (provider: MusicProviderType) => void;
-//   setUser: (user: any) => void;
-//   setAuthToken: (token: string) => void;
-// }
+  initiateProviderLogin: (provider: MusicProviderType) => void;
 
-// const createAuthSlice: StateCreator<any, [], [], AuthSlice> = create((set) => ({
-//   user: null,
-//   authToken: null,
-//   spotifyLoginCode: null,
-//   appleMusicLoginCode: null,
+  provider: MusicProviderType | null;
+  setProvider: (provider: MusicProviderType) => void;
 
-//   initiateLoginWithProvider: async (provider: MusicProviderType) => {
-//     // const [request, response, promptAsync] = useAuthRequest(
-//     //   musicProviderManger.getOauthRequestConfig(provider),
-//     //   musicProviderManger.getOauthRequestDiscovery(provider),
-//     // );
-//   },
+  spotifyToken: any;
+  setSpotifyToken: (token: string) => void;
+}
 
-//   // setProviderLoginCode: (code: string, provider: MusicProviderType) => {
-//   //   switch (provider) {
-//   //     case MusicProviderType.Spotify:
-//   //       set({ spotifyLoginCode: code });
-//   //       break;
-//   //     case MusicProviderType.AppleMusic:
-//   //       set({ appleMusicLoginCode: code });
-//   //       break;
-//   //     default:
-//   //       throw new Error("Invalid music app type");
-//   //   }
-//   // },
+export const createAuthSlice: StateCreator<
+  AppState & CommonSlice & AuthSlice,
+  [],
+  [],
+  AuthSlice
+> = (set) => ({
+  user: null,
+  setUser: (user: any) => set((state) => ({ user: user })),
 
-//   setAuthToken: (token: string) => set({ authToken: token }),
-//   setUser: (user: any) => set({ user: user }),
-//   // addBear: () => set((state) => ({ bears: state.bears + 1 })),
-// }));
+  provider: null,
+  setProvider: (provider: MusicProviderType) =>
+    set((state) => ({ provider: provider })),
 
-// export { createAuthSlice, AuthSlice };
+  initiateProviderLogin: async (provider: MusicProviderType) => {
+    const providerManager = new MusicProviderManager(provider);
+
+    try {
+      set({ loading: true });
+    } catch (error) {
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  spotifyToken: null,
+  setSpotifyToken: (token: string) => set((state) => ({ spotifyToken: token })),
+});
