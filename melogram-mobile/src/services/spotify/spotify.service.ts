@@ -5,9 +5,41 @@ import {
 } from "expo-auth-session";
 import { IMusicProviderService } from "../music-provider/music-provider-service.interface";
 import { ENVIRONMENT } from "../../config/constants";
+import { makeRequest } from "../http/http.service";
+import { HttpMethodType } from "../../config/enums";
+import base64 from "react-native-base64";
+import { SpotifyAccessTokenData } from "../../types/spotify.types";
 
 class SpotifyService implements IMusicProviderService {
   constructor() {}
+
+  async requestAccessToken<SpotifyAccessTokenData>(
+    loginCode: string,
+  ): Promise<SpotifyAccessTokenData> {
+    const headers = {
+      Authorization:
+        "Basic " +
+        base64.encode(
+          process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID +
+            ":" +
+            process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_SECRET,
+        ),
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
+
+    const response = await makeRequest(
+      HttpMethodType.Post,
+      process.env.EXPO_PUBLIC_SPOTIFY_ACCESS_TOKEN_ENDPOINT!,
+      headers,
+      {
+        code: loginCode,
+        redirect_uri: process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI,
+        grant_type: "authorization_code",
+      },
+    );
+
+    return response;
+  }
 
   getOauthRequestConfig(): AuthRequestConfig {
     const redirectUri = makeRedirectUri({

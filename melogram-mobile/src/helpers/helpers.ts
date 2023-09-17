@@ -12,6 +12,14 @@ export const getScrollViewHeight = () => {
   return height - tabBarHeight - HEADER_HEIGHT - statusBarHeight;
 };
 
-export const getSecureStoreKeyForProvider = (provider: MusicProviderType) => {
+export const getSecureStoreLoginCodeKeyForProvider = (
+  provider: MusicProviderType,
+) => {
   return `${provider.toLowerCase()}_login_code`;
+};
+
+export const getSecureStoreAccessTokenDataForProvider = (
+  provider: MusicProviderType,
+) => {
+  return `${provider.toLowerCase()}_access_token_data`;
 };

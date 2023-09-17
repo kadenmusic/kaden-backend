@@ -8,6 +8,7 @@ import { theme } from "./src/styles/theme";
 import AppNavigatorComponent from "./src/components/navigation/app-navigator.component";
 // import { createAuthSlice } from "./src/state/slices/auth.slice";
 import { useSecureStore } from "./src/services/secure-store/secure-store.service";
+import LoadingComponent from "./src/components/shared/loading/loading.component";
 
 export default function App() {
   const [appReady, setAppReady] = React.useState(false);
@@ -56,6 +57,7 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <AppNavigatorComponent />
+      <LoadingComponent />
     </NativeBaseProvider>
   );
 }

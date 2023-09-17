@@ -3,20 +3,11 @@ import { Entypo, Ionicons } from "@expo/vector-icons";
 import HeaderComponent from "../../components/shared/header/header.component";
 import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 import ActionButtonComponent from "../../components/shared/action-button/action-button.component";
-import { login, useMusicAppAuth } from "../../services/auth/auth.service";
 import { MusicProviderType } from "../../config/enums";
 import { useAppStore } from "../../state/app-store";
 
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
-  const spotifyAuth = useMusicAppAuth(MusicProviderType.Spotify);
-
-  // const loading = useAppStore((state) => state.loading);
-  // const setLoading = useAppStore((state) => state.setLoading);
   const loginWithProvider = useAppStore((state) => state.initiateProviderLogin);
-
-  const user = useAppStore((state) => state.user);
-  const loading = useAppStore((state) => state.loading);
-  console.log("loading", loading);
 
   return (
     <SafeAreaWrapperComponent>

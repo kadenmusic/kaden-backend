@@ -18,6 +18,11 @@ class MusicProviderManager implements IMusicProviderManager {
     return this.registry;
   }
 
+  // TODO: Redesign this manager; it's not implemented properly
+  public getService(): IMusicProviderService {
+    return this.provider;
+  }
+
   public getOauthRequestConfig(): AuthRequestConfig {
     return this.provider.getOauthRequestConfig();
   }
