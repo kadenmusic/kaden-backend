@@ -5,13 +5,26 @@ import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/
 import ActionButtonComponent from "../../components/shared/action-button/action-button.component";
 import { useMusicAppAuth } from "../../services/auth/auth.service";
 import { MusicProviderType } from "../../config/enums";
-
-import Constants from "expo-constants";
-
-const APP_SCHEME = Constants.expoConfig?.scheme;
+import { useAppStore } from "../../state/app-state";
+// import { useAppState } from "../../state/app-state";
 
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
   const spotifyAuth = useMusicAppAuth(MusicProviderType.Spotify);
+
+  const loading = useAppStore((state) => state.loading);
+  const setLoading = useAppStore((state) => state.setLoading);
+  console.log("loading", loading);
+
+  // const bears = useAppStore((state) => state.bears);
+  // console.log("bears", bears);
+
+  // const useAppStore = useAppStore((state) => state.authToken);
+  // const appState = useAppState((state) => state.loading);
+  // console.log("appState", appState);
+
+  // const initiateLoginWithProvider = createAuthSlice(
+  //   (state: any) => state.initiateLoginWithProvider,
+  // );
 
   return (
     <SafeAreaWrapperComponent>
@@ -36,7 +49,8 @@ export default function GetStartedScreen({ navigation }: { navigation: any }) {
           </Text>
           <ActionButtonComponent
             onPress={() => {
-              spotifyAuth.promptAsync();
+              setLoading(true);
+              // initiateLoginWithProvider(MusicProviderType.Spotify);
             }}
             innerContent={
               <Flex

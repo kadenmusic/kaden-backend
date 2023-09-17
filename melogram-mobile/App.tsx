@@ -6,13 +6,13 @@ import { CUSTOM_FONTS } from "./src/config/constants";
 import * as Font from "expo-font";
 import { theme } from "./src/styles/theme";
 import AppNavigatorComponent from "./src/components/navigation/app-navigator.component";
-import { useAuthStore } from "./src/state/auth/auth.store";
+// import { createAuthSlice } from "./src/state/slices/auth.slice";
 import { useSecureStore } from "./src/services/secure-store/secure-store.service";
 
 export default function App() {
   const [appReady, setAppReady] = React.useState(false);
   const { getItemAsync, setItemAsync } = useSecureStore();
-  const setAuthToken = useAuthStore((state: any) => state.setAuthToken);
+  // const setAuthToken = createAuthSlice((state: any) => state.setAuthToken);
 
   React.useEffect(() => {
     const bootstrapAsync = async () => {
@@ -21,7 +21,7 @@ export default function App() {
       try {
         await Font.loadAsync(CUSTOM_FONTS);
         authToken = await getItemAsync("authToken");
-        setAuthToken(authToken);
+        // setAuthToken(authToken);
       } catch (e) {
         console.log("Restoring token failed.");
       } finally {
