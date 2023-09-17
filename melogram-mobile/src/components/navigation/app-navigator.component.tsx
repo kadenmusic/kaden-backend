@@ -6,16 +6,11 @@ import ProfileScreen from "../../screens/profile/profile.screen";
 import LoginScreen from "../../screens/login/login.screen";
 import NotificationsScreen from "../../screens/notifications/notifications.screen";
 import GetStartedScreen from "../../screens/get-started/get-started.screen";
-// import { createAuthSlice } from "../../state/slices/auth.slice";
-// import { useAppState } from "../../state/app-state";
-//
+import DummyCredentialsScreen from "../../screens/dummy-credentials/dummy-credentials.screen";
+
 export default function AppNavigatorComponent() {
   const Stack = createNativeStackNavigator();
-  // const authToken = createAuthSlice((state: any) => state.authToken);
-  // const appState = useAppState();
-  // console.log(appState);
 
-  // const loggedIn = !!authToken;
   const loggedIn = false;
 
   return (
@@ -24,6 +19,11 @@ export default function AppNavigatorComponent() {
 
       {!loggedIn ? (
         <Stack.Navigator>
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Dummy Credentials"
+            component={DummyCredentialsScreen}
+          />
           <Stack.Screen
             options={{ headerShown: false }}
             name="GetStarted"
