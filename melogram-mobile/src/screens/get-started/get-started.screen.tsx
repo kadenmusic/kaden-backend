@@ -3,16 +3,11 @@ import { Entypo, Ionicons } from "@expo/vector-icons";
 import HeaderComponent from "../../components/shared/header/header.component";
 import SafeAreaWrapperComponent from "../../components/shared/safe-area-wrapper/safe-area-wrapper.component";
 import ActionButtonComponent from "../../components/shared/action-button/action-button.component";
-import { useMusicAppAuth } from "../../services/auth/auth.service";
 import { MusicProviderType } from "../../config/enums";
-
-import Constants from "expo-constants";
-
-const APP_SCHEME = Constants.expoConfig?.scheme;
+import { useAppStore } from "../../state/app-store";
 
 export default function GetStartedScreen({ navigation }: { navigation: any }) {
-  const spotifyAuth = useMusicAppAuth(MusicProviderType.Spotify);
-  const appleMusicAuth = useMusicAppAuth(MusicProviderType.AppleMusic);
+  const loginWithProvider = useAppStore((state) => state.initiateProviderLogin);
 
   return (
     <SafeAreaWrapperComponent>
@@ -37,7 +32,7 @@ export default function GetStartedScreen({ navigation }: { navigation: any }) {
           </Text>
           <ActionButtonComponent
             onPress={() => {
-              spotifyAuth.promptAsync();
+              loginWithProvider(MusicProviderType.Spotify);
             }}
             innerContent={
               <Flex

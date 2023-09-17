@@ -1,3 +1,8 @@
+export const ENVIRONMENT = {
+  dev: "development",
+  prod: "production",
+};
+
 export const CUSTOM_FONTS = {
   "PlusJakartaSans-Regular": require("../../assets/fonts/PlusJakartaSans-Regular.ttf"),
   "PlusJakartaSans-Bold": require("../../assets/fonts/PlusJakartaSans-Bold.ttf"),
