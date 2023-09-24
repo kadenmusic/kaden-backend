@@ -15,6 +15,7 @@ import {
 } from "../../helpers/helpers";
 import { setItemAsync } from "../../services/secure-store/secure-store.service";
 import { SpotifyAccessTokenData } from "../../types/spotify.types";
+import { secondsToMilliseconds } from "../../util/date";
 
 export interface AuthSlice {
   user: any;
@@ -27,6 +28,8 @@ export interface AuthSlice {
 
   spotifyAccessTokenData: SpotifyAccessTokenData | null;
   setSpotifyAccessTokenData: (data: SpotifyAccessTokenData) => void;
+
+  spotifyAccessTokenExpirationDate: number | null;
 }
 
 export const createAuthSlice: StateCreator<
@@ -36,9 +39,10 @@ export const createAuthSlice: StateCreator<
   AuthSlice
 > = (set) => ({
   user: null,
+  provider: null,
+  spotifyAccessTokenExpirationDate: null,
   setUser: (user: any) => set((state) => ({ user: user })),
 
-  provider: null,
   setProvider: (provider: MusicProviderType) =>
     set((state) => ({ provider: provider })),
 
@@ -70,8 +74,14 @@ export const createAuthSlice: StateCreator<
             JSON.stringify(accessTokenData),
           );
 
+          const accessTokenExpiry =
+            Date.now() + secondsToMilliseconds(accessTokenData.expires_in);
+
           // TODO: Set user, call API to create in DB
-          set({ spotifyAccessTokenData: accessTokenData });
+          set({
+            spotifyAccessTokenData: accessTokenData,
+            spotifyAccessTokenExpirationDate: accessTokenExpiry,
+          });
         } else {
           throw new Error(JSON.stringify(response));
         }
