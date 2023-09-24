@@ -1,7 +1,7 @@
 {
   "name": "melogram",
   "version": "0.0.1",
-  "description": "Kaden Music - Daily Music Sharing",
+  "description": "Melogram - Daily Music Sharing",
   "engines": {
     "node": "20.x || 18.x || 16.x"
   },

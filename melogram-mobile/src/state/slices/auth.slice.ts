@@ -77,7 +77,8 @@ export const createAuthSlice: StateCreator<
           const accessTokenExpiry =
             Date.now() + secondsToMilliseconds(accessTokenData.expires_in);
 
-          // TODO: Set user, call API to create in DB
+          // Make internal API call
+
           set({
             spotifyAccessTokenData: accessTokenData,
             spotifyAccessTokenExpirationDate: accessTokenExpiry,
